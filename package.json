@@ -1,5 +1,5 @@
 {
-  "name": "bundel-name",
+  "name": "pokemon",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -13,8 +13,8 @@
     "compatibleRange": "2.1.11",
     "dashboardPanels": [
       {
-        "name": "Scoreboard",
-        "title": "Scoreboard",
+        "name": "pokemon",
+        "title": "pokemon",
         "file": "main.html",
         "fullbleed": true,
         "headerColor": "#525F78"
@@ -36,7 +36,8 @@
     "@mui/material": "^5.14.10",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "use-immer": "^0.9.0"
   },
   "devDependencies": {
     "@nodecg/types": "^2.1.11",

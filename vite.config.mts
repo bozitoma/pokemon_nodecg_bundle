@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [
     react(),
     nodecg({
-      bundleName: 'bundle-name',
+      bundleName: 'pokemon',
       graphics: './src/graphics/*.tsx',
       dashboard: './src/dashboard/main.tsx',
       extension: {
