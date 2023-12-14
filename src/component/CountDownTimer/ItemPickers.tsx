@@ -1,21 +1,18 @@
-import { styled } from "@mui/material";
-import { ItemPicker } from "./ItemPicker";
-import { Spacer } from "./Spacer";
+import { styled } from '@mui/material';
+import { ItemPicker } from './ItemPicker';
+import { Spacer } from './Spacer';
 
-const Pickers = styled("div")({
-  display: "flex",
-  justifyContent: "center",
+const Pickers = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
 });
 
 type TIMES = {
-  mins: number[];
-  secs: number[];
+  [key: string]: number[];
 };
 
 type Props = {
-  className: string;
   items: TIMES;
-  values: string;
   handleChange: () => void;
 };
 

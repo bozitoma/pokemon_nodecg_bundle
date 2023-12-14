@@ -1,6 +1,6 @@
 // 参考 https://tsukulog.net/2021/10/03/react-count-down-timer/
 import { TimeDisplay } from './TimeDisplay';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { SelectChangeEvent, Stack } from '@mui/material';
 import { ItemPickers } from './ItemPickers';
 import Button from '@mui/material/Button';
@@ -9,25 +9,33 @@ import StopIcon from '@mui/icons-material/Stop';
 import TimerOffIcon from '@mui/icons-material/TimerOff';
 import { useRepList } from '../../hooks/useRepList';
 
-const TIMES = {
-  // hour: [...Array(60)].map((u, i) => i),
-  min: [...Array(60)].map((u, i) => i),
-  sec: [...Array(60)].map((u, i) => i),
+type Times = {
+  [key: string]: number[];
+};
+
+type Props = {
+  [key: string]: number;
+};
+
+const TIMES: Times = {
+  // map関数で第二引数（index番号）だけを使いたい場合でも、第一引数を書く必要がある。
+  // その時、アンダーバーで使わない引数を表すことができ、undefindedのuを加えて _u と記載する。
+  min: [...Array(60)].map((_u, i) => i),
+  sec: [...Array(60)].map((_u, i) => i),
 };
 
 export const CountDownTimer = () => {
   // 値をゼロ埋めする関数
-  const zeroPaddingNum = useCallback((num) => {
-    return String(num).padStart(2, '0');
+  const zeroPaddingNum = useCallback((num: number) => {
+    const afterPaddingNum = String(num).padStart(2, '0');
+    return Number(afterPaddingNum);
   }, []);
 
   const [selectItems, setSelectItems] = useState(() => {
-    const newItems = {};
+    const newItems: Props = {};
 
-    Object.keys(TIMES).forEach((name, i) => {
-      {
-        name === 'min' ? (newItems[name] = TIMES[name][20]) : (newItems[name] = TIMES[name][0]);
-      }
+    Object.keys(TIMES).forEach((name) => {
+      name === 'min' ? (newItems[name] = TIMES[name][20]) : (newItems[name] = TIMES[name][0]);
     });
 
     return newItems;
@@ -56,7 +64,7 @@ export const CountDownTimer = () => {
   const [isReset, setIsReset] = useState(false);
 
   // setIntervalメソッドが返す一意に識別するIDを保存するRef
-  const intervalID = useRef(null);
+  const intervalID: MutableRefObject<number | undefined> = useRef(undefined);
 
   // カウントダウンを一時停止する関数
   const stopTime = useCallback(() => {
@@ -77,12 +85,6 @@ export const CountDownTimer = () => {
         min,
         sec,
       } = newTimeLimit;
-
-      // // 「時」が1時間以上あるときに「分」と「秒」が0以下になったら、「時」を1つ減らして、「分」を60に戻す
-      // if (newTimeLimit.hour > 0 && min <= 0 && sec <= 0) {
-      //   newTimeLimit.hour -= 1;
-      //   newTimeLimit.min = 60;
-      // }
 
       // 「分」が1分以上あるときに「秒」が0以下になったら、「分」を1つ減らして、「秒」を60に戻す
       if (newTimeLimit.min > 0 && newTimeLimit.sec <= 0) {
@@ -109,7 +111,6 @@ export const CountDownTimer = () => {
       setRepTimer(`${zeroPaddingNum(newTimeLimit.min)}:${zeroPaddingNum(newTimeLimit.sec)}`);
 
       return {
-        // hour: zeroPaddingNum(newTimeLimit.hour),
         min: zeroPaddingNum(newTimeLimit.min),
         sec: zeroPaddingNum(newTimeLimit.sec),
       };
@@ -118,7 +119,10 @@ export const CountDownTimer = () => {
 
   // タイマーをスタートする関数
   const startTime = useCallback(() => {
-    intervalID.current = setInterval(() => tick(), 1000);
+    // 本来"window."は省略できるが、Node.jsのTimerのAPIに"setInterval"が存在しているようで
+    // VScode上でJSのかNode.jsのかが判断できないため、"window."を明示してJSのものと判断させる必要があるらしい。
+    // 参考:https://www.konosumi.net/entry/2019/05/26/150656
+    intervalID.current = window.setInterval(() => tick(), 1000);
 
     setIsStart(true);
     setIsStop(true);
@@ -170,7 +174,7 @@ export const CountDownTimer = () => {
   return (
     <>
       <Stack justifyContent="center" spacing={2}>
-        <ItemPickers items={TIMES} handleChange={handleChange} />
+        <ItemPickers items={TIMES} handleChange={() => handleChange} />
         <TimeDisplay time={timeLimit} delimiter=":" />
         <Stack justifyContent="center" direction="row" spacing={2}>
           <Button

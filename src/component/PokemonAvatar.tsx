@@ -8,6 +8,10 @@ import PAR from '../assets/PAR_icon.png';
 import SLP from '../assets/SLP_icon.png';
 import FTN from '../assets/FTN_icon.png';
 
+type Pokedex = {
+  [key: string]: string;
+};
+
 type Props = {
   className: string;
   terastallize: boolean;
@@ -16,7 +20,7 @@ type Props = {
   repBattleStatus: (newValue: string) => void;
   repTerastallized: (newValue: boolean) => void;
   repStatusAilment: (newValue: StatusAilment) => void;
-  pokedex: never[];
+  pokedex: Pokedex[];
   selectPokemon: string | null;
 };
 
@@ -55,7 +59,7 @@ export function PokemonAvatar({
   };
 
   // →型をポケモンの名前に一致しているかどうかに変えたい
-  const pokemonIcon: string[] | undefined = getPokemonIcon(selectPokemon as unknown as string);
+  const pokemonIcon: Pokedex | undefined = getPokemonIcon(selectPokemon as unknown as string);
 
   useEffect(() => {
     repBattleStatus(className);
@@ -64,7 +68,7 @@ export function PokemonAvatar({
 
     //ifを指定しないとundefindで画像を読み込めず、ページ自体も読み込めない
     if (pokemonIcon !== undefined) {
-      repPokemonIcon(pokemonIcon['img1']);
+      repPokemonIcon(pokemonIcon.img1);
     }
   }, [pokemonIcon, className, terastallize, statusAilment]);
 
