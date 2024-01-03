@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1920px;
+  color: aliceblue;
+}
+
+body {
+  background: url(../../assets/battle_DS.png);
+}
+
+.wrapper {
+  position: fixed;
+  display: flex;
+}
+
+.p1-party {
+  position: relative;
+  left: 107px;
+}
+
+.p2-party {
+  position: relative;
+  left: 1516px;
+}
+
+.benched {
+  filter: brightness(0.5);
+}
+
+.active {
+  filter: brightness(1);
+}
+
+.fainting {
+  filter: grayscale(100) brightness(0.8);
+}
+
+.pokemonIcons {
+  position: relative;
+}
+
+.pokemonIcon {
+  position: relative;
+  display: flex;
+  height: 148px;
+  width: 148px;
+  top: 250px;
+  margin-bottom: 62px;
+}
+
+.statusAilment {
+  position: absolute;
+  top: 360px;
+  left: 120px;
+  height: 48px;
+  width: 48px;
+}
+
+.faintingIcon {
+  position: absolute;
+  top: 360px;
+  left: 120px;
+  height: 48px;
+  width: 48px;
+}
+
+.terastallized {
+  position: absolute;
+  top: 200px;
+  right: 75px;
+  height: 32px;
+  width: 32px;
+}
+
+.timer {
+  position: absolute;
+  top: 110px;
+  right: 890px;
+
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}

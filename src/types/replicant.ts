@@ -1,5 +1,5 @@
 // Replicantsの型を定義
-import type { StatusAilment } from '../types/scoreboard';
+import type { StatusAilment, TerastalType } from '../types/scoreboard';
 
 export interface ReplicantMap {
   // Player1
@@ -64,6 +64,20 @@ export interface ReplicantMap {
   Player2Poke5StatusAilment: StatusAilment;
   Player2Poke6StatusAilment: StatusAilment;
 
+  Player1Poke1TerastalType: TerastalType;
+  Player1Poke2TerastalType: TerastalType;
+  Player1Poke3TerastalType: TerastalType;
+  Player1Poke4TerastalType: TerastalType;
+  Player1Poke5TerastalType: TerastalType;
+  Player1Poke6TerastalType: TerastalType;
+
+  Player2Poke1TerastalType: TerastalType;
+  Player2Poke2TerastalType: TerastalType;
+  Player2Poke3TerastalType: TerastalType;
+  Player2Poke4TerastalType: TerastalType;
+  Player2Poke5TerastalType: TerastalType;
+  Player2Poke6TerastalType: TerastalType;
+
   // BattleInfo
   RoundInfo: string;
   BestOfInfo: string;
@@ -75,12 +89,12 @@ export const replicantDefaultValues: ReplicantMap = {
   // Player1
   Player1Name: 'Player1',
   Player1Score: 0,
-  Player1Poke1Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player1Poke2Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player1Poke3Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player1Poke4Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player1Poke5Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player1Poke6Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
+  Player1Poke1Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player1Poke2Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player1Poke3Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player1Poke4Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player1Poke5Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player1Poke6Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
 
   Player1Poke1BattleStatus: 'Benched',
   Player1Poke2BattleStatus: 'Benched',
@@ -133,6 +147,20 @@ export const replicantDefaultValues: ReplicantMap = {
   Player2Poke4StatusAilment: '',
   Player2Poke5StatusAilment: '',
   Player2Poke6StatusAilment: '',
+
+  Player1Poke1TerastalType: 'normal',
+  Player1Poke2TerastalType: 'normal',
+  Player1Poke3TerastalType: 'normal',
+  Player1Poke4TerastalType: 'normal',
+  Player1Poke5TerastalType: 'normal',
+  Player1Poke6TerastalType: 'normal',
+
+  Player2Poke1TerastalType: 'normal',
+  Player2Poke2TerastalType: 'normal',
+  Player2Poke3TerastalType: 'normal',
+  Player2Poke4TerastalType: 'normal',
+  Player2Poke5TerastalType: 'normal',
+  Player2Poke6TerastalType: 'normal',
 
   // BattleInfo
   RoundInfo: 'Round',

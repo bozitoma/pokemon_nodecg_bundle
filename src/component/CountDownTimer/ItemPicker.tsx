@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from 'react';
 import { Spacer } from './Spacer';
 import { styled, Stack } from '@mui/material';
 
@@ -21,7 +22,7 @@ const Selector = styled('select')({
 type Props = {
   itemName: string;
   values: number[];
-  handleChange: () => void;
+  handleChange: ChangeEventHandler<HTMLSelectElement>;
 };
 
 export const ItemPicker = ({ itemName, values, handleChange }: Props) => {

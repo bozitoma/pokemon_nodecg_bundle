@@ -31,3 +31,26 @@ export interface Party {
 }
 
 export type StatusAilment = '' | 'PSN' | 'BRN' | 'FRZ' | 'PAR' | 'SLP' | string | undefined;
+
+export type TerastalType =
+  | 'normal'
+  | 'fire'
+  | 'water'
+  | 'grass'
+  | 'electric'
+  | 'ice'
+  | 'fighting'
+  | 'poison'
+  | 'ground'
+  | 'flying'
+  | 'psychic'
+  | 'bug'
+  | 'rock'
+  | 'ghost'
+  | 'dragon'
+  | 'dark'
+  | 'steel'
+  | 'fairy'
+  | 'stellar'
+  | string
+  | undefined;

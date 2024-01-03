@@ -49,6 +49,25 @@ export const useRepList = () => {
     'Player1Poke6Terastallized'
   );
 
+  const [repPlayer1Poke1TerastalType, setRepPlayer1Poke1TerastalType] = useReplicant(
+    'Player1Poke1TerastalType'
+  );
+  const [repPlayer1Poke2TerastalType, setRepPlayer1Poke2TerastalType] = useReplicant(
+    'Player1Poke2TerastalType'
+  );
+  const [repPlayer1Poke3TerastalType, setRepPlayer1Poke3TerastalType] = useReplicant(
+    'Player1Poke3TerastalType'
+  );
+  const [repPlayer1Poke4TerastalType, setRepPlayer1Poke4TerastalType] = useReplicant(
+    'Player1Poke4TerastalType'
+  );
+  const [repPlayer1Poke5TerastalType, setRepPlayer1Poke5TerastalType] = useReplicant(
+    'Player1Poke5TerastalType'
+  );
+  const [repPlayer1Poke6TerastalType, setRepPlayer1Poke6TerastalType] = useReplicant(
+    'Player1Poke6TerastalType'
+  );
+
   const [repPlayer1Poke1StatusAilment, setRepPlayer1Poke1StatusAilment] = useReplicant(
     'Player1Poke1StatusAilment'
   );
@@ -114,6 +133,25 @@ export const useRepList = () => {
   );
   const [repPlayer2Poke6Terastallized, setRepPlayer2Poke6Terastallized] = useReplicant(
     'Player2Poke6Terastallized'
+  );
+
+  const [repPlayer2Poke1TerastalType, setRepPlayer2Poke1TerastalType] = useReplicant(
+    'Player2Poke1TerastalType'
+  );
+  const [repPlayer2Poke2TerastalType, setRepPlayer2Poke2TerastalType] = useReplicant(
+    'Player2Poke2TerastalType'
+  );
+  const [repPlayer2Poke3TerastalType, setRepPlayer2Poke3TerastalType] = useReplicant(
+    'Player2Poke3TerastalType'
+  );
+  const [repPlayer2Poke4TerastalType, setRepPlayer2Poke4TerastalType] = useReplicant(
+    'Player2Poke4TerastalType'
+  );
+  const [repPlayer2Poke5TerastalType, setRepPlayer2Poke5TerastalType] = useReplicant(
+    'Player2Poke5TerastalType'
+  );
+  const [repPlayer2Poke6TerastalType, setRepPlayer2Poke6TerastalType] = useReplicant(
+    'Player2Poke6TerastalType'
   );
 
   const [repPlayer2Poke1StatusAilment, setRepPlayer2Poke1StatusAilment] = useReplicant(
@@ -254,6 +292,33 @@ export const useRepList = () => {
     setRepPlayer2Poke5StatusAilment,
     repPlayer2Poke6StatusAilment,
     setRepPlayer2Poke6StatusAilment,
+
+    // TerastalType
+    repPlayer1Poke1TerastalType,
+    setRepPlayer1Poke1TerastalType,
+    repPlayer1Poke2TerastalType,
+    setRepPlayer1Poke2TerastalType,
+    repPlayer1Poke3TerastalType,
+    setRepPlayer1Poke3TerastalType,
+    repPlayer1Poke4TerastalType,
+    setRepPlayer1Poke4TerastalType,
+    repPlayer1Poke5TerastalType,
+    setRepPlayer1Poke5TerastalType,
+    repPlayer1Poke6TerastalType,
+    setRepPlayer1Poke6TerastalType,
+
+    repPlayer2Poke1TerastalType,
+    setRepPlayer2Poke1TerastalType,
+    repPlayer2Poke2TerastalType,
+    setRepPlayer2Poke2TerastalType,
+    repPlayer2Poke3TerastalType,
+    setRepPlayer2Poke3TerastalType,
+    repPlayer2Poke4TerastalType,
+    setRepPlayer2Poke4TerastalType,
+    repPlayer2Poke5TerastalType,
+    setRepPlayer2Poke5TerastalType,
+    repPlayer2Poke6TerastalType,
+    setRepPlayer2Poke6TerastalType,
 
     // BattleInfo
     repRoundInfo,

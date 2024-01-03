@@ -88,6 +88,19 @@ export function App() {
     handleTerastallizedP2poke4,
     handleTerastallizedP2poke5,
     handleTerastallizedP2poke6,
+    terastalType,
+    handleChangeTerastalP1poke1,
+    handleChangeTerastalP1poke2,
+    handleChangeTerastalP1poke3,
+    handleChangeTerastalP1poke4,
+    handleChangeTerastalP1poke5,
+    handleChangeTerastalP1poke6,
+    handleChangeTerastalP2poke1,
+    handleChangeTerastalP2poke2,
+    handleChangeTerastalP2poke3,
+    handleChangeTerastalP2poke4,
+    handleChangeTerastalP2poke5,
+    handleChangeTerastalP2poke6,
   } = useTerastalButton();
 
   const {
@@ -166,6 +179,19 @@ export function App() {
     setRepPlayer2Poke4StatusAilment,
     setRepPlayer2Poke5StatusAilment,
     setRepPlayer2Poke6StatusAilment,
+
+    setRepPlayer1Poke1TerastalType,
+    setRepPlayer1Poke2TerastalType,
+    setRepPlayer1Poke3TerastalType,
+    setRepPlayer1Poke4TerastalType,
+    setRepPlayer1Poke5TerastalType,
+    setRepPlayer1Poke6TerastalType,
+    setRepPlayer2Poke1TerastalType,
+    setRepPlayer2Poke2TerastalType,
+    setRepPlayer2Poke3TerastalType,
+    setRepPlayer2Poke4TerastalType,
+    setRepPlayer2Poke5TerastalType,
+    setRepPlayer2Poke6TerastalType,
   } = useRepList();
 
   return (
@@ -227,11 +253,14 @@ export function App() {
               terastallize={terastallize.Player1.pokemon1}
               handleTerastallized={handleTerastallizedP1poke1}
               statusAilment={statusAilment.Player1.pokemon1}
+              terastalType={terastalType.Player1.pokemon1}
+              handleChangeTerastalType={handleChangeTerastalP1poke1}
               handleChangeStatusAilment={handleChangeStatusAilmentP1poke1}
               isTerastallize={isTerastallize.Player1.pokemon1}
               repPokemonIcon={setRepPlayer1Poke1Icon}
               repBattleStatus={setRepPlayer1Poke1BattleStatus}
               repTerastallized={setRepPlayer1Poke1Terastallized}
+              repTerastalType={setRepPlayer1Poke1TerastalType}
               repStatusAilment={setRepPlayer1Poke1StatusAilment}
             />
             <BattleManegement
@@ -241,11 +270,14 @@ export function App() {
               terastallize={terastallize.Player1.pokemon2}
               handleTerastallized={handleTerastallizedP1poke2}
               statusAilment={statusAilment.Player1.pokemon2}
+              terastalType={terastalType.Player1.pokemon2}
+              handleChangeTerastalType={handleChangeTerastalP1poke2}
               handleChangeStatusAilment={handleChangeStatusAilmentP1poke2}
               isTerastallize={isTerastallize.Player1.pokemon2}
               repPokemonIcon={setRepPlayer1Poke2Icon}
               repBattleStatus={setRepPlayer1Poke2BattleStatus}
               repTerastallized={setRepPlayer1Poke2Terastallized}
+              repTerastalType={setRepPlayer1Poke2TerastalType}
               repStatusAilment={setRepPlayer1Poke2StatusAilment}
             />
             <BattleManegement
@@ -255,11 +287,14 @@ export function App() {
               terastallize={terastallize.Player1.pokemon3}
               handleTerastallized={handleTerastallizedP1poke3}
               statusAilment={statusAilment.Player1.pokemon3}
+              terastalType={terastalType.Player1.pokemon3}
+              handleChangeTerastalType={handleChangeTerastalP1poke3}
               handleChangeStatusAilment={handleChangeStatusAilmentP1poke3}
               isTerastallize={isTerastallize.Player1.pokemon3}
               repPokemonIcon={setRepPlayer1Poke3Icon}
               repBattleStatus={setRepPlayer1Poke3BattleStatus}
               repTerastallized={setRepPlayer1Poke3Terastallized}
+              repTerastalType={setRepPlayer1Poke3TerastalType}
               repStatusAilment={setRepPlayer1Poke3StatusAilment}
             />
             <BattleManegement
@@ -269,11 +304,14 @@ export function App() {
               terastallize={terastallize.Player1.pokemon4}
               handleTerastallized={handleTerastallizedP1poke4}
               statusAilment={statusAilment.Player1.pokemon4}
+              terastalType={terastalType.Player1.pokemon4}
+              handleChangeTerastalType={handleChangeTerastalP1poke4}
               handleChangeStatusAilment={handleChangeStatusAilmentP1poke4}
               isTerastallize={isTerastallize.Player1.pokemon4}
               repPokemonIcon={setRepPlayer1Poke4Icon}
               repBattleStatus={setRepPlayer1Poke4BattleStatus}
               repTerastallized={setRepPlayer1Poke4Terastallized}
+              repTerastalType={setRepPlayer1Poke4TerastalType}
               repStatusAilment={setRepPlayer1Poke4StatusAilment}
             />
             <BattleManegement
@@ -283,11 +321,14 @@ export function App() {
               terastallize={terastallize.Player1.pokemon5}
               handleTerastallized={handleTerastallizedP1poke5}
               statusAilment={statusAilment.Player1.pokemon5}
+              terastalType={terastalType.Player1.pokemon5}
+              handleChangeTerastalType={handleChangeTerastalP1poke5}
               handleChangeStatusAilment={handleChangeStatusAilmentP1poke5}
               isTerastallize={isTerastallize.Player1.pokemon5}
               repPokemonIcon={setRepPlayer1Poke5Icon}
               repBattleStatus={setRepPlayer1Poke5BattleStatus}
               repTerastallized={setRepPlayer1Poke5Terastallized}
+              repTerastalType={setRepPlayer1Poke5TerastalType}
               repStatusAilment={setRepPlayer1Poke5StatusAilment}
             />
             <BattleManegement
@@ -297,11 +338,14 @@ export function App() {
               terastallize={terastallize.Player1.pokemon6}
               handleTerastallized={handleTerastallizedP1poke6}
               statusAilment={statusAilment.Player1.pokemon6}
+              terastalType={terastalType.Player1.pokemon6}
+              handleChangeTerastalType={handleChangeTerastalP1poke6}
               handleChangeStatusAilment={handleChangeStatusAilmentP1poke6}
               isTerastallize={isTerastallize.Player1.pokemon6}
               repPokemonIcon={setRepPlayer1Poke6Icon}
               repBattleStatus={setRepPlayer1Poke6BattleStatus}
               repTerastallized={setRepPlayer1Poke6Terastallized}
+              repTerastalType={setRepPlayer1Poke6TerastalType}
               repStatusAilment={setRepPlayer1Poke6StatusAilment}
             />
           </Item>
@@ -314,11 +358,14 @@ export function App() {
               terastallize={terastallize.Player2.pokemon1}
               handleTerastallized={handleTerastallizedP2poke1}
               statusAilment={statusAilment.Player2.pokemon1}
+              terastalType={terastalType.Player2.pokemon1}
+              handleChangeTerastalType={handleChangeTerastalP2poke1}
               handleChangeStatusAilment={handleChangeStatusAilmentP2poke1}
               isTerastallize={isTerastallize.Player2.pokemon1}
               repPokemonIcon={setRepPlayer2Poke1Icon}
               repBattleStatus={setRepPlayer2Poke1BattleStatus}
               repTerastallized={setRepPlayer2Poke1Terastallized}
+              repTerastalType={setRepPlayer2Poke1TerastalType}
               repStatusAilment={setRepPlayer2Poke1StatusAilment}
             />
             <BattleManegement
@@ -328,11 +375,14 @@ export function App() {
               terastallize={terastallize.Player2.pokemon2}
               handleTerastallized={handleTerastallizedP2poke2}
               statusAilment={statusAilment.Player2.pokemon2}
+              terastalType={terastalType.Player2.pokemon2}
+              handleChangeTerastalType={handleChangeTerastalP2poke2}
               handleChangeStatusAilment={handleChangeStatusAilmentP2poke2}
               isTerastallize={isTerastallize.Player2.pokemon2}
               repPokemonIcon={setRepPlayer2Poke2Icon}
               repBattleStatus={setRepPlayer2Poke2BattleStatus}
               repTerastallized={setRepPlayer2Poke2Terastallized}
+              repTerastalType={setRepPlayer2Poke2TerastalType}
               repStatusAilment={setRepPlayer2Poke2StatusAilment}
             />
             <BattleManegement
@@ -342,11 +392,14 @@ export function App() {
               terastallize={terastallize.Player2.pokemon3}
               handleTerastallized={handleTerastallizedP2poke3}
               statusAilment={statusAilment.Player2.pokemon3}
+              terastalType={terastalType.Player2.pokemon3}
+              handleChangeTerastalType={handleChangeTerastalP2poke3}
               handleChangeStatusAilment={handleChangeStatusAilmentP2poke3}
               isTerastallize={isTerastallize.Player2.pokemon3}
               repPokemonIcon={setRepPlayer2Poke3Icon}
               repBattleStatus={setRepPlayer2Poke3BattleStatus}
               repTerastallized={setRepPlayer2Poke3Terastallized}
+              repTerastalType={setRepPlayer2Poke3TerastalType}
               repStatusAilment={setRepPlayer2Poke3StatusAilment}
             />
             <BattleManegement
@@ -356,11 +409,14 @@ export function App() {
               terastallize={terastallize.Player2.pokemon4}
               handleTerastallized={handleTerastallizedP2poke4}
               statusAilment={statusAilment.Player2.pokemon4}
+              terastalType={terastalType.Player2.pokemon4}
+              handleChangeTerastalType={handleChangeTerastalP2poke4}
               handleChangeStatusAilment={handleChangeStatusAilmentP2poke4}
               isTerastallize={isTerastallize.Player2.pokemon4}
               repPokemonIcon={setRepPlayer2Poke4Icon}
               repBattleStatus={setRepPlayer2Poke4BattleStatus}
               repTerastallized={setRepPlayer2Poke4Terastallized}
+              repTerastalType={setRepPlayer2Poke4TerastalType}
               repStatusAilment={setRepPlayer2Poke4StatusAilment}
             />
             <BattleManegement
@@ -370,11 +426,14 @@ export function App() {
               terastallize={terastallize.Player2.pokemon5}
               handleTerastallized={handleTerastallizedP2poke5}
               statusAilment={statusAilment.Player2.pokemon5}
+              terastalType={terastalType.Player2.pokemon5}
+              handleChangeTerastalType={handleChangeTerastalP2poke5}
               handleChangeStatusAilment={handleChangeStatusAilmentP2poke5}
               isTerastallize={isTerastallize.Player2.pokemon5}
               repPokemonIcon={setRepPlayer2Poke5Icon}
               repBattleStatus={setRepPlayer2Poke5BattleStatus}
               repTerastallized={setRepPlayer2Poke5Terastallized}
+              repTerastalType={setRepPlayer2Poke5TerastalType}
               repStatusAilment={setRepPlayer2Poke5StatusAilment}
             />
             <BattleManegement
@@ -384,11 +443,14 @@ export function App() {
               terastallize={terastallize.Player2.pokemon6}
               handleTerastallized={handleTerastallizedP2poke6}
               statusAilment={statusAilment.Player2.pokemon6}
+              terastalType={terastalType.Player2.pokemon6}
+              handleChangeTerastalType={handleChangeTerastalP2poke6}
               handleChangeStatusAilment={handleChangeStatusAilmentP2poke6}
               isTerastallize={isTerastallize.Player2.pokemon6}
               repPokemonIcon={setRepPlayer2Poke6Icon}
               repBattleStatus={setRepPlayer2Poke6BattleStatus}
               repTerastallized={setRepPlayer2Poke6Terastallized}
+              repTerastalType={setRepPlayer2Poke6TerastalType}
               repStatusAilment={setRepPlayer2Poke6StatusAilment}
             />
           </Item>

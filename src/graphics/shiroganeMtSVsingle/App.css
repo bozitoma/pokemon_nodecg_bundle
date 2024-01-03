@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  max-width: 1280px;
+  max-width: 1920px;
   color: aliceblue;
 }
 
 body {
-  background: url(../assets/Scoreboard.png);
+  background: url(../../assets/battle_switch_single_timer.png);
 }
 
 .wrapper {
@@ -72,7 +72,15 @@ body {
   right: 75px;
   height: 32px;
   width: 32px;
-  border: 2px solid #32a1ce;
-  background-color: aliceblue;
-  border-radius: 5px;
+}
+
+.timer {
+  position: absolute;
+  top: 110px;
+  right: 890px;
+
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
 }

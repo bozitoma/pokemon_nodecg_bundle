@@ -10,7 +10,7 @@ type Props = {
 };
 export function StatusAilmentSelector({ statusAilment, handleChangeStatusAilment }: Props) {
   return (
-    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} tabIndex={-1}>
+    <FormControl variant="standard" sx={{ m: 1, minWidth: 100 }} tabIndex={-1}>
       <InputLabel>状態異常</InputLabel>
       <Select value={statusAilment} onChange={handleChangeStatusAilment} label="状態異常">
         <MenuItem value="">

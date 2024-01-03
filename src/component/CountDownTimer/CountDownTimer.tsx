@@ -1,7 +1,14 @@
 // 参考 https://tsukulog.net/2021/10/03/react-count-down-timer/
 import { TimeDisplay } from './TimeDisplay';
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
-import { SelectChangeEvent, Stack } from '@mui/material';
+import {
+  ChangeEventHandler,
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { Stack } from '@mui/material';
 import { ItemPickers } from './ItemPickers';
 import Button from '@mui/material/Button';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -27,8 +34,7 @@ const TIMES: Times = {
 export const CountDownTimer = () => {
   // 値をゼロ埋めする関数
   const zeroPaddingNum = useCallback((num: number) => {
-    const afterPaddingNum = String(num).padStart(2, '0');
-    return Number(afterPaddingNum);
+    return String(num).padStart(2, '0');
   }, []);
 
   const [selectItems, setSelectItems] = useState(() => {
@@ -41,7 +47,7 @@ export const CountDownTimer = () => {
     return newItems;
   });
 
-  const handleChange = useCallback((e: SelectChangeEvent) => {
+  const handleChange: ChangeEventHandler<HTMLSelectElement> = useCallback((e) => {
     setSelectItems((p) => ({
       ...p,
       [e.target.name]: Number(e.target.value),
@@ -111,8 +117,8 @@ export const CountDownTimer = () => {
       setRepTimer(`${zeroPaddingNum(newTimeLimit.min)}:${zeroPaddingNum(newTimeLimit.sec)}`);
 
       return {
-        min: zeroPaddingNum(newTimeLimit.min),
-        sec: zeroPaddingNum(newTimeLimit.sec),
+        min: newTimeLimit.min,
+        sec: newTimeLimit.sec,
       };
     });
   }, [zeroPaddingNum, stopTime]);
@@ -136,8 +142,8 @@ export const CountDownTimer = () => {
     // タイムピッカーで選択中の値に戻す
     setTimeLimit({
       // hour: zeroPaddingNum(selectItems.hour),
-      min: zeroPaddingNum(selectItems.min),
-      sec: zeroPaddingNum(selectItems.sec),
+      min: selectItems.min,
+      sec: selectItems.sec,
     });
 
     setRepTimer(`${zeroPaddingNum(selectItems.min)}:${zeroPaddingNum(selectItems.sec)}`);
@@ -152,10 +158,10 @@ export const CountDownTimer = () => {
   useEffect(() => {
     setTimeLimit({
       // hour: zeroPaddingNum(selectItems.hour),
-      min: zeroPaddingNum(selectItems.min),
-      sec: zeroPaddingNum(selectItems.sec),
+      min: selectItems.min,
+      sec: selectItems.sec,
     });
-  }, [selectItems, zeroPaddingNum]);
+  }, [selectItems]);
 
   // タイムアップ後にスタートボタンを押したときは、選択したタイムからカウントダウンする
   useEffect(() => {
@@ -163,18 +169,18 @@ export const CountDownTimer = () => {
     if (isStart && isTimeUp) {
       setTimeLimit({
         // hour: zeroPaddingNum(selectItems.hour),
-        min: zeroPaddingNum(selectItems.min),
-        sec: zeroPaddingNum(selectItems.sec),
+        min: selectItems.min,
+        sec: selectItems.sec,
       });
 
       setIsTimeUp(false);
     }
-  }, [isStart, isTimeUp, selectItems, zeroPaddingNum]); // スタートボタンを押したときに実行
+  }, [isStart, isTimeUp, selectItems]); // スタートボタンを押したときに実行
 
   return (
     <>
       <Stack justifyContent="center" spacing={2}>
-        <ItemPickers items={TIMES} handleChange={() => handleChange} />
+        <ItemPickers items={TIMES} handleChange={handleChange} />
         <TimeDisplay time={timeLimit} delimiter=":" />
         <Stack justifyContent="center" direction="row" spacing={2}>
           <Button

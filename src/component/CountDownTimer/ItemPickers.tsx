@@ -1,6 +1,7 @@
 import { styled } from '@mui/material';
 import { ItemPicker } from './ItemPicker';
 import { Spacer } from './Spacer';
+import { ChangeEventHandler } from 'react';
 
 const Pickers = styled('div')({
   display: 'flex',
@@ -13,7 +14,7 @@ type TIMES = {
 
 type Props = {
   items: TIMES;
-  handleChange: () => void;
+  handleChange: ChangeEventHandler<HTMLSelectElement>;
 };
 
 export const ItemPickers = ({ items, handleChange }: Props) => {

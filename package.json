@@ -22,7 +22,22 @@
     ],
     "graphics": [
       {
-        "file": "main.html",
+        "file": "shiroganeMtSVsingle.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "shiroganeMtSVdouble.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "shiroganeMtBW2.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "shiroganeMtHGSS.html",
         "width": 1920,
         "height": 1080
       }
