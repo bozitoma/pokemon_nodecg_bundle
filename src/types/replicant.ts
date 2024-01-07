@@ -120,12 +120,12 @@ export const replicantDefaultValues: ReplicantMap = {
   // Player2
   Player2Name: 'Player2',
   Player2Score: 0,
-  Player2Poke1Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player2Poke2Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player2Poke3Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player2Poke4Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player2Poke5Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
-  Player2Poke6Icon: 'https://sg.portal-pokemon.com/play/resources/pokedex/img/icon_ball.png',
+  Player2Poke1Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player2Poke2Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player2Poke3Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player2Poke4Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player2Poke5Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  Player2Poke6Icon: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
 
   Player2Poke1BattleStatus: 'Benched',
   Player2Poke2BattleStatus: 'Benched',
