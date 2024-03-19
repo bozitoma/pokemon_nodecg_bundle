@@ -15,6 +15,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import TimerOffIcon from '@mui/icons-material/TimerOff';
 import { useRepList } from '../../hooks/useRepList';
+import { useRecoilState } from 'recoil';
+import { countDownTimerAtom } from '../../store/atomCountDownTimer';
 
 type Times = {
   [key: string]: number[];
@@ -54,20 +56,26 @@ export const CountDownTimer = () => {
     }));
   }, []);
 
+  const [countDownTimer, setCountDownTimer] = useRecoilState(countDownTimerAtom);
+  const isStart = countDownTimer.isStart;
+  const isStop = countDownTimer.isStop;
+  const isTimeUp = countDownTimer.isTimeUp;
+  const isReset = countDownTimer.isReset;
+
   // タイムリミットを保存するステート
   const [timeLimit, setTimeLimit] = useState(selectItems);
 
-  // カウントダウンタイマーがスタートしているかどうか
-  const [isStart, setIsStart] = useState(false);
+  // // カウントダウンタイマーがスタートしているかどうか
+  // const [isStart, setIsStart] = useState(false);
 
-  // カウントダウンがストップしていればtrue
-  const [isStop, setIsStop] = useState(false);
+  // // カウントダウンがストップしていればtrue
+  // const [isStop, setIsStop] = useState(false);
 
-  // タイムアップしていればtrue
-  const [isTimeUp, setIsTimeUp] = useState(false);
+  // // タイムアップしていればtrue
+  // const [isTimeUp, setIsTimeUp] = useState(false);
 
-  // カウントダウンがリセットされたらtrue
-  const [isReset, setIsReset] = useState(false);
+  // // カウントダウンがリセットされたらtrue
+  // const [isReset, setIsReset] = useState(false);
 
   // setIntervalメソッドが返す一意に識別するIDを保存するRef
   const intervalID: MutableRefObject<number | undefined> = useRef(undefined);
@@ -76,8 +84,13 @@ export const CountDownTimer = () => {
   const stopTime = useCallback(() => {
     clearInterval(intervalID.current);
 
-    setIsStop(false);
-    setIsStart(false);
+    // setIsStop(false);
+    // setIsStart(false);
+    setCountDownTimer((prev) => ({
+      ...prev,
+      isStart: false,
+      isStop: false,
+    }));
   }, []);
 
   const { setRepTimer } = useRepList();
@@ -105,7 +118,12 @@ export const CountDownTimer = () => {
         sec <= 0
       ) {
         stopTime();
-        setIsTimeUp(true);
+
+        // setIsTimeUp(true);
+        setCountDownTimer((prev) => ({
+          ...prev,
+          isTimeUp: true,
+        }));
 
         return newTimeLimit;
       }
@@ -130,9 +148,15 @@ export const CountDownTimer = () => {
     // 参考:https://www.konosumi.net/entry/2019/05/26/150656
     intervalID.current = window.setInterval(() => tick(), 1000);
 
-    setIsStart(true);
-    setIsStop(true);
-    setIsReset(false);
+    // setIsStart(true);
+    // setIsStop(true);
+    // setIsReset(false);
+    setCountDownTimer((prev) => ({
+      ...prev,
+      isStart: true,
+      isStop: true,
+      isReset: false,
+    }));
   }, [tick]);
 
   // タイムリミットをリセットする関数
@@ -147,11 +171,17 @@ export const CountDownTimer = () => {
     });
 
     setRepTimer(`${zeroPaddingNum(selectItems.min)}:${zeroPaddingNum(selectItems.sec)}`);
-
-    setIsReset(true);
-    setIsStart(false);
-    setIsStop(false);
-    setIsTimeUp(false);
+    setCountDownTimer((prev) => ({
+      ...prev,
+      isStart: false,
+      isStop: false,
+      isReset: true,
+      isTimeUp: false,
+    }));
+    // setIsStart(false);
+    // setIsStop(false);
+    // setIsReset(true);
+    // setIsTimeUp(false);
   }, [selectItems, zeroPaddingNum]);
 
   // ピッカーで選択した値をそのままタイムリミットとして反映する
@@ -172,17 +202,33 @@ export const CountDownTimer = () => {
         min: selectItems.min,
         sec: selectItems.sec,
       });
-
-      setIsTimeUp(false);
+      setCountDownTimer((prev) => ({
+        ...prev,
+        isTimeUp: false,
+      }));
+      // setIsTimeUp(false);
     }
   }, [isStart, isTimeUp, selectItems]); // スタートボタンを押したときに実行
 
   return (
     <>
-      <Stack justifyContent="center" spacing={2}>
-        <ItemPickers items={TIMES} handleChange={handleChange} />
-        <TimeDisplay time={timeLimit} delimiter=":" />
+      <Stack justifyContent="center" spacing={5}>
+        <Stack spacing={4}>
+          <ItemPickers items={TIMES} handleChange={handleChange} />
+          <TimeDisplay time={timeLimit} delimiter=":" />
+        </Stack>
         <Stack justifyContent="center" direction="row" spacing={2}>
+          <Button
+            className="start-button"
+            onClick={startTime}
+            disabled={isStart ? true : false}
+            size="small"
+            variant="contained"
+            startIcon={<PlayArrowIcon />}
+            sx={{ width: 100 }}
+          >
+            start
+          </Button>
           <Button
             className="start-button"
             onClick={stopTime}
@@ -191,20 +237,9 @@ export const CountDownTimer = () => {
             variant="outlined"
             color="error"
             startIcon={<StopIcon />}
-            sx={{ width: 90 }}
+            sx={{ width: 100 }}
           >
             stop
-          </Button>
-          <Button
-            className="start-button"
-            onClick={startTime}
-            disabled={isStart ? true : false}
-            size="small"
-            variant="contained"
-            startIcon={<PlayArrowIcon />}
-            sx={{ width: 90 }}
-          >
-            start
           </Button>
           <Button
             className="reset-button"
@@ -214,7 +249,7 @@ export const CountDownTimer = () => {
             variant="contained"
             color="error"
             startIcon={<TimerOffIcon />}
-            sx={{ width: 90 }}
+            sx={{ width: 100 }}
           >
             reset
           </Button>

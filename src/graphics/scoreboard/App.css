@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1920px;
+  max-height: 1080px;
+  color: aliceblue;
+}
+
+/* RiveとOverlayを重ねる */
+.overlay {
+  position: absolute;
+}
+
+/* 1P側のパーティの位置 */
+.Player1-party {
+  position: absolute;
+  top: 680px;
+  left: 5px;
+}
+
+/* 2P側のパーティの位置 */
+.Player2-party {
+  position: relative;
+  left: 1845px;
+}
+
+/* 控え時の見た目 */
+.Benched {
+  filter: contrast(20%);
+}
+
+/* 選出時の見た目 */
+.Active {
+  filter: brightness(1);
+}
+
+/* ひんし時の見た目 */
+.Fainting {
+  filter: grayscale(100) brightness(0.5);
+}
+
+/* ポケモンアイコン全体 */
+.pokemonIcons {
+  position: relative;
+  padding-bottom: 67px;
+}
+
+/* ポケモンアイコン単体の大きさと位置 */
+.pokemonIcon {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+}
+
+/* 状態異常アイコンの大きさと位置 */
+.statusAilment {
+  position: absolute;
+  top: 5px;
+  left: 45px;
+  height: 28px;
+  width: 28px;
+}
+
+/* テラスタルアイコンの大きさと位置 */
+.terastallized {
+  position: absolute;
+  top: 35px;
+  left: 45px;
+  height: 28px;
+  width: 28px;
+}
+
+/* テラスタルアイコンの大きさと位置 */
+.timer {
+  position: absolute;
+  top: 25px;
+  left: 935px;
+
+  /* フォント関連の設定 */
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}

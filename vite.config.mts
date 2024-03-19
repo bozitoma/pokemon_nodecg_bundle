@@ -15,13 +15,14 @@ export default defineConfig({
     nodecg({
       bundleName: 'pokemon',
       graphics: './src/graphics/*.tsx',
-      dashboard: './src/dashboard/main.tsx',
+      dashboard: './src/dashboard/*.tsx',
       extension: {
         input: './src/extension/index.ts',
         plugins: [rollupEsbuild(), rollupExternals()],
       },
     }),
   ],
+  assetsInclude: ['**/*.riv'], // rivファイルを適用させるコンフィグ
 });
 
 // import { resolve } from 'path';

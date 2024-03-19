@@ -1,0 +1,17 @@
+.box {
+  position: relative;
+  height: 128px;
+  width: 128px;
+}
+
+.Benched {
+  filter: contrast(30%);
+}
+
+.Active {
+  filter: brightness(1);
+}
+
+.Fainting {
+  filter: grayscale(100) brightness(0.8);
+}

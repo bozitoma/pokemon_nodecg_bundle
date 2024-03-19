@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "run-p dev:*",
+    "dev:tsc": "tsc -b src/browser src/extension -w --preserveWatchOutput",
+    "dev:vite": "vite",
+    "dev:nodecg": "onchange extension schema configschema.json -ik -- node --enable-source-maps ../..",
     "build": "tsc && vite build",
     "watch": "vite build --watch",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -13,31 +16,23 @@
     "compatibleRange": "2.1.11",
     "dashboardPanels": [
       {
-        "name": "pokemon",
-        "title": "pokemon",
-        "file": "main.html",
+        "name": "countDownTimer",
+        "title": "countDownTimer",
+        "file": "countDownTimer.html",
+        "fullbleed": true,
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "newScoreboard",
+        "title": "newScoreboard",
+        "file": "newScoreboard.html",
         "fullbleed": true,
         "headerColor": "#525F78"
       }
     ],
     "graphics": [
       {
-        "file": "shiroganeMtSVsingle.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "shiroganeMtSVdouble.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "shiroganeMtBW2.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "shiroganeMtHGSS.html",
+        "file": "scoreboard.html",
         "width": 1920,
         "height": 1080
       }
@@ -48,14 +43,24 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.9",
+    "@mui/lab": "^5.0.0-alpha.167",
     "@mui/material": "^5.14.10",
+    "@mui/x-data-grid": "^6.19.6",
+    "@prisma/client": "^5.10.2",
+    "@rive-app/react-canvas": "^4.8.3",
+    "better-sqlite3": "^8.7.0",
+    "express": "^4.18.3",
     "graphql": "^16.8.1",
+    "onchange": "^7.1.0",
+    "prisma": "^5.10.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "recoil": "^0.7.7",
     "use-immer": "^0.9.0"
   },
   "devDependencies": {
     "@nodecg/types": "^2.1.11",
+    "@types/better-sqlite3": "^7.6.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
