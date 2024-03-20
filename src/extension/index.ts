@@ -20,6 +20,24 @@ type queryRanking = {
 };
 
 export default (nodecg: NodeCG.ServerAPI) => {
+  // const app = nodecg.Router();
+
+  // const PORT = 8080;
+  // app.use
+  // // cors対策
+  // app.get('/', (_req, res, next) => {
+  //   res.set({ 'Access-Control-Allow-Origin': '*' });
+  //   next();
+  // });
+  // app.use((_req, res, next) => {
+  //   res.set({ 'Access-Control-Allow-Origin': '*' });
+  //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+  //   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTION');
+  //   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  // });
+  // nodecg.mount(app);
+
   // サーバー側にログを出す場合のコード
   // const log = new nodecg.Logger('partyLog');
   // log.info(repParty.value);
@@ -134,12 +152,12 @@ export default (nodecg: NodeCG.ServerAPI) => {
     // const moveResult = convertJson(moveRanking);
     // console.log('moveResult', moveResult);
 
-    console.log('id', value.id);
-    console.log('Name', value.pokemon);
-    console.log('item', itemRanking);
-    console.log('ability', abilityRanking);
-    console.log('teraType', teraTypeRanking);
-    console.log('move', moveRanking);
+    // console.log('id', value.id);
+    // console.log('Name', value.pokemon);
+    // console.log('item', itemRanking);
+    // console.log('ability', abilityRanking);
+    // console.log('teraType', teraTypeRanking);
+    // console.log('move', moveRanking);
 
     return {
       id: value.id,
@@ -151,7 +169,7 @@ export default (nodecg: NodeCG.ServerAPI) => {
     };
   });
 
-  console.log(readJsonRanking);
+  // console.log(readJsonRanking);
 
   repParty.value = result;
   repPokemon.value = queryDataPokemon;

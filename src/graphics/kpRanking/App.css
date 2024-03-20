@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1920px;
+  color: aliceblue;
+}
+
+body {
+  background: url(../../assets/kp_ranking.jpg);
+}
+
+.wrapper {
+  display: flex;
+  position: absolute;
+}
+
+.list {
+  position: relative;
+  top: 225px;
+  left: 48px;
+}
+
+.section {
+  display: flex;
+  padding-right: 100px;
+  padding-bottom: 40px;
+}
+
+.rank {
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 48px;
+  font-weight: 600;
+  padding-top: 14px;
+  margin-right: 12px;
+
+  text-align: center;
+  width: 55px;
+  height: 80px;
+}
+
+.pokemonIcon {
+  height: 80px;
+  width: 80px;
+}
+.name {
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 44px;
+  font-weight: 600;
+  width: 290px;
+  height: 80px;
+  padding-top: 10px;
+  padding-left: 25px;
+}
+
+.score {
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 64px;
+  font-weight: 600;
+  padding-top: 5px;
+  padding-left: 60px;
+}
+
+.totalParty {
+  position: absolute;
+  top: 933px;
+  left: 1660px;
+
+  /* フォント関連の設定 */
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 96px;
+  font-weight: 600;
+}

@@ -5,14 +5,14 @@ import rollupEsbuild from 'rollup-plugin-esbuild';
 import rollupExternals from 'rollup-plugin-node-externals';
 
 export default defineConfig({
-  server: {
-    host: '0.0.0.0',
-    port: 8080,
-  },
   clearScreen: false,
   plugins: [
     react(),
     nodecg({
+      server: {
+        host: '192.168.3.34',
+        port: 8080,
+      },
       bundleName: 'pokemon',
       graphics: './src/graphics/*.tsx',
       dashboard: './src/dashboard/*.tsx',

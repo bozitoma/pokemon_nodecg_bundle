@@ -16,16 +16,16 @@
     "compatibleRange": "2.1.11",
     "dashboardPanels": [
       {
-        "name": "countDownTimer",
-        "title": "countDownTimer",
-        "file": "countDownTimer.html",
+        "name": "Scoreboard_pokemon",
+        "title": "1.Scoreboard",
+        "file": "scoreboard.html",
         "fullbleed": true,
         "headerColor": "#525F78"
       },
       {
-        "name": "newScoreboard",
-        "title": "newScoreboard",
-        "file": "newScoreboard.html",
+        "name": "database_pokemon",
+        "title": "2.database",
+        "file": "database_table.html",
         "fullbleed": true,
         "headerColor": "#525F78"
       }
@@ -33,6 +33,11 @@
     "graphics": [
       {
         "file": "scoreboard.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "kpRanking.html",
         "width": 1920,
         "height": 1080
       }
