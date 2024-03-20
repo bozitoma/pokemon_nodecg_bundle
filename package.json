@@ -28,6 +28,13 @@
         "file": "database_table.html",
         "fullbleed": true,
         "headerColor": "#525F78"
+      },
+      {
+        "name": "bracket_pokemon",
+        "title": "3.bracket",
+        "file": "bracket.html",
+        "fullbleed": true,
+        "headerColor": "#525F78"
       }
     ],
     "graphics": [
@@ -40,6 +47,11 @@
         "file": "kpRanking.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "bracket.html",
+        "width": 1920,
+        "height": 1080
       }
     ]
   },
@@ -47,7 +59,7 @@
     "@apollo/client": "^3.8.5",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.9",
+    "@mui/icons-material": "^5.15.14",
     "@mui/lab": "^5.0.0-alpha.167",
     "@mui/material": "^5.14.10",
     "@mui/x-data-grid": "^6.19.6",
