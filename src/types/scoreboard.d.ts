@@ -65,6 +65,22 @@ export interface Pokemon {
   terastalButton: boolean; //テラスタルボタンを1体だけに適用するための真偽値
 }
 
+export interface TopcutPokemon {
+  name: string; //ポケモン名
+  icon: string | undefined;
+  score: number;
+}
+
+export type Topcut = {
+  pokemon1: TopcutPokemon;
+  pokemon2: TopcutPokemon;
+  pokemon3: TopcutPokemon;
+  pokemon4: TopcutPokemon;
+  pokemon5: TopcutPokemon;
+  pokemon6: TopcutPokemon;
+  partyKP: number;
+};
+
 export type EntryParty = {
   id: number;
   accountID: string;
@@ -205,6 +221,16 @@ export type TerastalType_JP =
   | 'ステラ';
 
 export type PlayerNum = 'Player1' | 'Player2';
+
+export type TopcutPlayerNum =
+  | 'Player1'
+  | 'Player2'
+  | 'Player3'
+  | 'Player4'
+  | 'Player5'
+  | 'Player6'
+  | 'Player7'
+  | 'Player8';
 
 export type PokemonNum =
   | 'pokemon1'

@@ -35,24 +35,8 @@ export const ScoreboardButtons = () => {
       TournamentName: scoreboradInfo.TournamentName,
       Round: scoreboradInfo.Round,
       BestOf: scoreboradInfo.BestOf,
-      Player1: {
-        name: scoreboradInfo.Player1.name,
-        score: scoreboradInfo.Player1.score,
-        swiss: {
-          win: scoreboradInfo.Player1.swiss.win,
-          lose: scoreboradInfo.Player1.swiss.lose,
-          draw: scoreboradInfo.Player1.swiss.draw,
-        },
-      },
-      Player2: {
-        name: scoreboradInfo.Player2.name,
-        score: scoreboradInfo.Player2.score,
-        swiss: {
-          win: scoreboradInfo.Player2.swiss.win,
-          lose: scoreboradInfo.Player2.swiss.lose,
-          draw: scoreboradInfo.Player2.swiss.draw,
-        },
-      },
+      Player1: scoreboradInfo.Player1,
+      Player2: scoreboradInfo.Player2,
     });
     setSubmitOpen(true); // Submit完了のスナックバーを表示
   };

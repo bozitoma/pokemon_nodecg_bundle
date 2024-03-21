@@ -41,7 +41,6 @@ const typeConvert: Prop = {
 
 export function PartyImport({ player }: PlayerNums) {
   const setScoreborad = useSetRecoilState(scoreboradInfoAtom);
-  const [isLoading, setIsLoding] = useState(false);
   const [selectParty, setSelectParty] = useState<EntryMargeParty | null>(null);
 
   const { repParty } = useRepList();
@@ -60,7 +59,6 @@ export function PartyImport({ player }: PlayerNums) {
     };
 
     const pokemons = getPlayerData();
-    setIsLoding(true);
     setScoreborad((prev) => ({
       ...prev,
       [player]: {
@@ -97,7 +95,6 @@ export function PartyImport({ player }: PlayerNums) {
         },
       },
     }));
-    setIsLoding(false);
   };
 
   return (
@@ -118,7 +115,6 @@ export function PartyImport({ player }: PlayerNums) {
         variant="contained"
         size="small"
         startIcon={<FileDownloadIcon />}
-        loading={isLoading}
         onClick={onClick}
       >
         INPORT

@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1920px;
+  color: aliceblue;
+}
+
+body {
+  background: url(../../assets/topcut_party.jpg);
+}
+
+.wrapper {
+  display: flex;
+  position: absolute;
+}
+
+.list {
+  position: relative;
+  top: 265px;
+  left: 20px;
+  margin-right: 35px;
+}
+
+.party_row {
+  display: flex;
+  position: relative;
+  margin-bottom: 43px;
+}
+
+.score {
+  position: relative;
+  top: 30px;
+  text-align: center;
+  width: 150px;
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 64px;
+  font-weight: 600;
+  padding-left: 30px;
+}
+
+.pokemonIcon {
+  height: 128px;
+  width: 128px;
+}
+
+.totalParty {
+  position: absolute;
+  top: 990px;
+  left: 1225px;
+
+  /* フォント関連の設定 */
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.maxPartyKP {
+  position: absolute;
+  top: 933px;
+  left: 1660px;
+
+  /* フォント関連の設定 */
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 96px;
+  font-weight: 600;
+}

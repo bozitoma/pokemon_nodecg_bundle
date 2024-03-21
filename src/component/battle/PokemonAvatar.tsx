@@ -54,7 +54,7 @@ const StatusAilmentlAvatar = styled(Avatar)(() => ({
 }));
 
 export function PokemonAvatar({ player, pokemonNum }: Props) {
-  const { pokedex } = usePokedex();
+  const { getPokemonIcon } = usePokedex();
   const { setRepBattleParty } = useRepList();
   const scoreboard = useRecoilValue(scoreboradInfoAtom);
   const selectPokemon = scoreboard[player][pokemonNum].name;
@@ -62,18 +62,6 @@ export function PokemonAvatar({ player, pokemonNum }: Props) {
   const terastallize = scoreboard[player][pokemonNum].terastallize;
   const statusAilment = scoreboard[player][pokemonNum].statusAilment;
   const terastalType = scoreboard[player][pokemonNum].teraType;
-
-  const getPokemonIcon = (name: string | null) => {
-    const pokeName = pokedex.findIndex((data) => data.name === name);
-    if (typeof pokeName !== 'undefined') {
-      const index = pokedex[pokeName];
-      const icon =
-        index === undefined
-          ? 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png'
-          : index['img1'];
-      return icon;
-    }
-  };
 
   // →型をポケモンの名前に一致しているかどうかに変えたい
   const pokemonIcon: string | undefined = getPokemonIcon(selectPokemon);

@@ -50,6 +50,7 @@ export default (nodecg: NodeCG.ServerAPI) => {
   const repK4P = nodecg.Replicant('K4P');
   const repK5P = nodecg.Replicant('K5P');
   const repK6P = nodecg.Replicant('K6P');
+  const repK2P_KPtop10 = nodecg.Replicant('K2P_KPtop10');
 
   const dbPath = './bundles/pokemon/src/db/tournament.db'; //rootからの相対パス
   const db = new Database(dbPath);
@@ -100,12 +101,13 @@ export default (nodecg: NodeCG.ServerAPI) => {
   });
 
   // KP情報を読み込む
-  const queryDataKP: KPType = db.prepare('SELECT rank, pokemon, score FROM KP').all() as KPType;
-  const queryDataK2P: KPType = db.prepare('SELECT rank, pokemon, score FROM K2P').all() as KPType;
-  const queryDataK3P: KPType = db.prepare('SELECT rank, pokemon, score FROM K3P').all() as KPType;
-  const queryDataK4P: KPType = db.prepare('SELECT rank, pokemon, score FROM K4P').all() as KPType;
-  const queryDataK5P: KPType = db.prepare('SELECT rank, pokemon, score FROM K5P').all() as KPType;
-  const queryDataK6P: KPType = db.prepare('SELECT rank, pokemon, score FROM K6P').all() as KPType;
+  const queryDataKP: KPType = db.prepare('SELECT * FROM KP').all() as KPType;
+  const queryDataK2P: KPType = db.prepare('SELECT * FROM K2P').all() as KPType;
+  const queryDataK3P: KPType = db.prepare('SELECT * FROM K3P').all() as KPType;
+  const queryDataK4P: KPType = db.prepare('SELECT * FROM K4P').all() as KPType;
+  const queryDataK5P: KPType = db.prepare('SELECT * FROM K5P').all() as KPType;
+  const queryDataK6P: KPType = db.prepare('SELECT * FROM K6P').all() as KPType;
+  const queryDataK2P_KPtop10: KPType = db.prepare('SELECT * FROM K2P_KPtop10').all() as KPType;
 
   const queryDataRanking = db.prepare('SELECT * FROM Ranking').all() as queryRanking[];
 
@@ -180,4 +182,5 @@ export default (nodecg: NodeCG.ServerAPI) => {
   repK4P.value = queryDataK4P;
   repK5P.value = queryDataK5P;
   repK6P.value = queryDataK6P;
+  repK2P_KPtop10.value = queryDataK2P_KPtop10;
 };

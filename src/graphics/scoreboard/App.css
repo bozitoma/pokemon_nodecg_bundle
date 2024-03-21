@@ -15,19 +15,20 @@
 /* 1P側のパーティの位置 */
 .Player1-party {
   position: absolute;
-  top: 680px;
+  top: 681px;
   left: 5px;
 }
 
 /* 2P側のパーティの位置 */
 .Player2-party {
   position: relative;
+  top: 1px;
   left: 1845px;
 }
 
 /* 控え時の見た目 */
 .Benched {
-  filter: contrast(20%);
+  filter: contrast(50%) opacity(0.5);
 }
 
 /* 選出時の見た目 */
@@ -56,8 +57,8 @@
 /* 状態異常アイコンの大きさと位置 */
 .statusAilment {
   position: absolute;
-  top: 5px;
-  left: 45px;
+  top: 35px;
+  /* left: 45px; */
   height: 28px;
   width: 28px;
 }
@@ -65,17 +66,16 @@
 /* テラスタルアイコンの大きさと位置 */
 .terastallized {
   position: absolute;
-  top: 35px;
-  left: 45px;
-  height: 28px;
-  width: 28px;
+  left: 38px;
+  height: 36px;
+  width: 36px;
 }
 
 /* テラスタルアイコンの大きさと位置 */
 .timer {
   position: absolute;
-  top: 25px;
-  left: 935px;
+  top: 17px;
+  left: 937px;
 
   /* フォント関連の設定 */
   font-family: 'Noto Sans-DisplayBold', Helvetica;

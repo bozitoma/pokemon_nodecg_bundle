@@ -9,26 +9,13 @@ type Props = {
 
 export function GraphicsKP({ listNumber }: Props) {
   const { repKP } = useRepList();
-  const { pokedex } = usePokedex();
+  const { getPokemonIcon } = usePokedex();
 
   // 三項演算子でundefindを排除
   const KPdata = repKP ? repKP[listNumber] : KPDefaultValues;
   const rank = KPdata.rank;
   const name = KPdata.pokemon;
   const score = KPdata.score;
-
-  const getPokemonIcon = (name: string | null) => {
-    const pokeName = pokedex.findIndex((data) => data.name === name);
-    if (typeof pokeName !== 'undefined') {
-      const index = pokedex[pokeName];
-      const icon =
-        index === undefined
-          ? 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png'
-          : index['img1'];
-      return icon;
-    }
-  };
-
   const nameConvert = (name: string) => {
     switch (name) {
       case 'ウーラオス（れんげきのかた）':

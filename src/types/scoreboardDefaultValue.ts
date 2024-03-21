@@ -1,4 +1,12 @@
-import { Party, PlayerAtom, Pokemon, PokemonNum } from './scoreboard';
+import {
+  Party,
+  PlayerAtom,
+  Pokemon,
+  PokemonNum,
+  Topcut,
+  TopcutPlayerNum,
+  TopcutPokemon,
+} from './scoreboard';
 import NoSelectIcon from '../assets/Monsterball_icon.png';
 
 export const pokemonDefaultValue: Pokemon = {
@@ -22,6 +30,22 @@ export const pokemonDefaultValue: Pokemon = {
   statusAilment: 'なし', //状態異常
   terastallize: false, //テラスタルの使用を表す真偽値
   terastalButton: false, //テラスタルボタンを1体だけに適用するための真偽値
+};
+
+export const topcutPokemonDefaultValue: TopcutPokemon = {
+  name: 'なし', //ポケモン名
+  icon: NoSelectIcon,
+  score: 0,
+};
+
+export const topcutDefaultValue: Topcut = {
+  pokemon1: topcutPokemonDefaultValue,
+  pokemon2: topcutPokemonDefaultValue,
+  pokemon3: topcutPokemonDefaultValue,
+  pokemon4: topcutPokemonDefaultValue,
+  pokemon5: topcutPokemonDefaultValue,
+  pokemon6: topcutPokemonDefaultValue,
+  partyKP: 0,
 };
 
 export const playerAtomDefaultValue: PlayerAtom = {
@@ -66,4 +90,15 @@ export const pokemonNumList: PokemonNum[] = [
   'pokemon4',
   'pokemon5',
   'pokemon6',
+];
+
+export const topcutPlayerNumList: TopcutPlayerNum[] = [
+  'Player1',
+  'Player2',
+  'Player3',
+  'Player4',
+  'Player5',
+  'Player6',
+  'Player7',
+  'Player8',
 ];

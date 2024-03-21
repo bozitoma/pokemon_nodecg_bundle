@@ -6,8 +6,9 @@ import type {
   Party,
   PokemonType_JP,
   TerastalType_JP,
+  Topcut,
 } from '../types/scoreboard';
-import { partyDefaultValue } from './scoreboardDefaultValue';
+import { partyDefaultValue, topcutDefaultValue } from './scoreboardDefaultValue';
 
 export type PlayerInfo = {
   name: string;
@@ -156,6 +157,7 @@ export interface ReplicantMap {
   K4P: KP[];
   K5P: KP[];
   K6P: KP[];
+  K2P_KPtop10: KP[];
   Timer: string;
   ScoreboardInfo: {
     Message: string;
@@ -171,6 +173,16 @@ export interface ReplicantMap {
     commentator2: Commentator;
     commentator3: Commentator;
     commentator4: Commentator;
+  };
+  Topcut: {
+    Player1: Topcut;
+    Player2: Topcut;
+    Player3: Topcut;
+    Player4: Topcut;
+    Player5: Topcut;
+    Player6: Topcut;
+    Player7: Topcut;
+    Player8: Topcut;
   };
   Bracket: {
     WQFa: Bracket;
@@ -218,6 +230,7 @@ export const replicantDefaultValues: ReplicantMap = {
   K4P: [KPDefaultValues],
   K5P: [KPDefaultValues],
   K6P: [KPDefaultValues],
+  K2P_KPtop10: [KPDefaultValues],
   Timer: '00:00',
   ScoreboardInfo: {
     Message: 'Message',
@@ -233,6 +246,16 @@ export const replicantDefaultValues: ReplicantMap = {
     commentator2: commentatorDefaultValues,
     commentator3: commentatorDefaultValues,
     commentator4: commentatorDefaultValues,
+  },
+  Topcut: {
+    Player1: topcutDefaultValue,
+    Player2: topcutDefaultValue,
+    Player3: topcutDefaultValue,
+    Player4: topcutDefaultValue,
+    Player5: topcutDefaultValue,
+    Player6: topcutDefaultValue,
+    Player7: topcutDefaultValue,
+    Player8: topcutDefaultValue,
   },
   Bracket: {
     WQFa: bracketDefaultValues,

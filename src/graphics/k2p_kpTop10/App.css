@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1920px;
+  color: aliceblue;
+}
+
+body {
+  background: url(../../assets/K2P_KPtop10.jpg);
+}
+
+.wrapper {
+  display: flex;
+  position: absolute;
+}
+/*
+.list {
+  position: relative;
+  top: 225px;
+  left: 48px;
+} */
+
+.headerIcons {
+  display: flex;
+  position: absolute;
+  top: 180px;
+  left: 725px;
+}
+
+.headerIcon {
+  margin-right: 38px;
+}
+
+.section {
+  position: relative;
+  top: 265px;
+  left: 225px;
+  padding-right: 100px;
+  padding-bottom: 10px;
+}
+
+.k2pRow {
+  display: flex;
+  padding-right: 100px;
+}
+
+.pokemonIcon {
+  height: 64px;
+  width: 64px;
+}
+
+.name {
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 40px;
+  font-weight: 600;
+  width: 290px;
+  height: 80px;
+  padding-top: 5px;
+  padding-left: 25px;
+  margin-right: 105px;
+}
+
+.score {
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 48px;
+  font-weight: 600;
+  padding-top: 5px;
+  padding-left: 60px;
+  margin-right: 15px;
+}
+
+.totalParty {
+  position: absolute;
+  top: 933px;
+  left: 1660px;
+
+  /* フォント関連の設定 */
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 96px;
+  font-weight: 600;
+}

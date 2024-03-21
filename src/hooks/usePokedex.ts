@@ -35,5 +35,17 @@ export function usePokedex() {
   // ポケモン図鑑の名前をリストにした関数
   const POKEDEX = pokedex.map((obj) => obj.name);
 
-  return { pokedex, POKEDEX };
+  const getPokemonIcon = (name: string | null) => {
+    const pokeName = pokedex.findIndex((data) => data.name === name);
+    if (typeof pokeName !== 'undefined') {
+      const index = pokedex[pokeName];
+      const icon =
+        index === undefined
+          ? 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png'
+          : index['img1'];
+      return icon;
+    }
+  };
+
+  return { pokedex, POKEDEX, getPokemonIcon };
 }

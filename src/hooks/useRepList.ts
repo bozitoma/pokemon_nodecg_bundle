@@ -11,10 +11,12 @@ export const useRepList = () => {
   const [repK4P, setRepK4P] = useReplicant('K4P');
   const [repK5P, setRepK5P] = useReplicant('K5P');
   const [repK6P, setRepK6P] = useReplicant('K6P');
+  const [repK2P_KPtop10, setRepK2P_KPtop10] = useReplicant('K2P_KPtop10');
   const [repBattleParty, setRepBattleParty] = useReplicant('BattleParty'); //グラフィックに反映する用のレプリカント
   const [repInformation, setRepInformation] = useReplicant('ScoreboardInfo');
   const [repCommentator, setRepCommentator] = useReplicant('Commentator');
   const [repBracket, setRepBracket] = useReplicant('Bracket');
+  const [repTopcut, setRepTopcut] = useReplicant('Topcut');
 
   return {
     repParty,
@@ -37,6 +39,8 @@ export const useRepList = () => {
     setRepK5P,
     repK6P,
     setRepK6P,
+    repK2P_KPtop10,
+    setRepK2P_KPtop10,
     repBattleParty,
     setRepBattleParty,
     repInformation,
@@ -45,5 +49,7 @@ export const useRepList = () => {
     setRepCommentator,
     repBracket,
     setRepBracket,
+    repTopcut,
+    setRepTopcut,
   };
 };
