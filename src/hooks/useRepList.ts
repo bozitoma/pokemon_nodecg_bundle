@@ -1,6 +1,7 @@
 import { useReplicant } from './useReplicant';
 
 export const useRepList = () => {
+  const [repPokedex, setRepPokedex] = useReplicant('Pokedex'); // データベースからインポートする時のレプリカント
   const [repParty, setRepParty] = useReplicant('Party'); // データベースからインポートする時のレプリカント
   const [repPokemon, setRepPokemon] = useReplicant('Pokemon');
   const [repRanking, setRepRanking] = useReplicant('Ranking');
@@ -19,6 +20,8 @@ export const useRepList = () => {
   const [repTopcut, setRepTopcut] = useReplicant('Topcut');
 
   return {
+    repPokedex,
+    setRepPokedex,
     repParty,
     setRepParty,
     repPokemon,

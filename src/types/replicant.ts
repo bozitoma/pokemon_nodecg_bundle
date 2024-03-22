@@ -147,7 +147,52 @@ export const convertedRankingDefaultValues: ConvertedRanking = {
   move: [rankingContentsDefaultValues],
 };
 
+export type Pokedex = {
+  id: number;
+  no: number;
+  variable: number;
+  name: string;
+  ability1: string;
+  ability2: string;
+  ability3: string;
+  type1: PokemonType_JP;
+  type2: PokemonType_JP;
+  H: number;
+  A: number;
+  B: number;
+  C: number;
+  D: number;
+  S: number;
+  Total: number;
+  generation: number;
+  img1: string;
+  img2: string;
+};
+
+export const pokedexDefaultValues: Pokedex = {
+  id: 0,
+  no: 0,
+  variable: 0,
+  name: '',
+  ability1: '',
+  ability2: '',
+  ability3: '',
+  type1: 'なし',
+  type2: 'なし',
+  H: 0,
+  A: 0,
+  B: 0,
+  C: 0,
+  D: 0,
+  S: 0,
+  Total: 0,
+  generation: 0,
+  img1: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+  img2: 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png',
+};
+
 export interface ReplicantMap {
+  Pokedex: Pokedex[];
   Party: EntryMargeParty[];
   Pokemon: EntryPokemon[];
   Ranking: ConvertedRanking[];
@@ -221,6 +266,7 @@ export interface ReplicantMap {
 
 // Replicantsの初期値を定義
 export const replicantDefaultValues: ReplicantMap = {
+  Pokedex: [pokedexDefaultValues],
   Party: [entryMargePartyDefaultValues],
   Pokemon: [entryPokemonDefaultValues],
   Ranking: [convertedRankingDefaultValues],

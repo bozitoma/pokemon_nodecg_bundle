@@ -23,6 +23,10 @@ export function GraphicsK2P_KPtop10() {
         return '水オーガポン';
       case 'オーガポン（いしずえのめん）':
         return '岩オーガポン';
+      case 'ガチグマ（アカツキ）':
+        return '暁ガチグマ';
+      case 'ランドロス（れいじゅうフォルム）':
+        return '霊獣ランドロス';
       default:
         return name;
     }

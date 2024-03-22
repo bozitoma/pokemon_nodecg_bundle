@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRepList } from './useRepList';
 
 type Pokedex = {
   [key: string]: string;
@@ -33,12 +34,15 @@ export function usePokedex() {
   }, []);
 
   // ポケモン図鑑の名前をリストにした関数
-  const POKEDEX = pokedex.map((obj) => obj.name);
+  // const POKEDEX = pokedex.map((obj) => obj.name);
+
+  const { repPokedex } = useRepList();
+  const POKEDEX = repPokedex?.map((obj) => obj.name);
 
   const getPokemonIcon = (name: string | null) => {
-    const pokeName = pokedex.findIndex((data) => data.name === name);
-    if (typeof pokeName !== 'undefined') {
-      const index = pokedex[pokeName];
+    const pokeName = repPokedex?.findIndex((data) => data.name === name);
+    if (typeof pokeName !== 'undefined' && repPokedex) {
+      const index = repPokedex[pokeName];
       const icon =
         index === undefined
           ? 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png'

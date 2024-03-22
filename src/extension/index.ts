@@ -2,6 +2,7 @@ import NodeCG from '@nodecg/types';
 import Database from 'better-sqlite3';
 import { EntryMargeParty, EntryParty, EntryPokemon } from '../types/scoreboard';
 import { KP, RankingContents, ConvertedRanking } from '../types/replicant';
+import { pokedex } from './pokedex';
 
 type PartyType = readonly EntryParty[];
 type PokemonType = readonly EntryPokemon[];
@@ -20,23 +21,8 @@ type queryRanking = {
 };
 
 export default (nodecg: NodeCG.ServerAPI) => {
-  // const app = nodecg.Router();
-
-  // const PORT = 8080;
-  // app.use
-  // // cors対策
-  // app.get('/', (_req, res, next) => {
-  //   res.set({ 'Access-Control-Allow-Origin': '*' });
-  //   next();
-  // });
-  // app.use((_req, res, next) => {
-  //   res.set({ 'Access-Control-Allow-Origin': '*' });
-  //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-  //   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTION');
-  //   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-  // });
-  // nodecg.mount(app);
+  // Pokedexをインポートするextension
+  pokedex(nodecg);
 
   // サーバー側にログを出す場合のコード
   // const log = new nodecg.Logger('partyLog');
@@ -111,18 +97,6 @@ export default (nodecg: NodeCG.ServerAPI) => {
 
   const queryDataRanking = db.prepare('SELECT * FROM Ranking').all() as queryRanking[];
 
-  // const jsonConvert = (values: string[]) => {
-  //   const result = values.map((value) => {
-  //     const converted: RankingContent = JSON.parse(value) as RankingContent;
-  //     return {
-  //       Rank: converted.Rank,
-  //       Name: converted.Name,
-  //       Score: converted.Score,
-  //     };
-  //   });
-  //   return result;
-  // };
-
   // Json形式でデータベースに保存したので、読み込む際もJsonとして読み込む
   const readJsonRanking: ConvertedRanking[] = queryDataRanking.map((value) => {
     // 文字列がバイナリで保存されているので、JSON.perseで元に戻す
@@ -133,33 +107,6 @@ export default (nodecg: NodeCG.ServerAPI) => {
     const abilityRanking: RankingContents[] = JSON.parse(value.ability);
     const teraTypeRanking: RankingContents[] = JSON.parse(value.teraType);
     const moveRanking: RankingContents[] = JSON.parse(value.move);
-
-    // console.log('moveRanking', moveRanking); ->
-    // [
-    //   { Rank: 1, Name: 'かえんほうしゃ', Score: 100 },
-    //   { Rank: 1, Name: 'かみくだく', Score: 100 },
-    //   { Rank: 1, Name: 'しんそく', Score: 100 },
-    //   { Rank: 1, Name: 'ほのおのキバ', Score: 100 }
-    // ]
-
-    // const convertJson = (list: RankingContent[]) => {
-    //   return list.map((item) => {
-    //     return { Rank: item['Rank'], Name: item['Name'], Score: item['Score'] };
-    //   });
-    // };
-
-    // const itemResult = convertJson(itemRanking);
-    // const abilityResult = convertJson(abilityRanking);
-    // const teraTypeResult = convertJson(teraTypeRanking);
-    // const moveResult = convertJson(moveRanking);
-    // console.log('moveResult', moveResult);
-
-    // console.log('id', value.id);
-    // console.log('Name', value.pokemon);
-    // console.log('item', itemRanking);
-    // console.log('ability', abilityRanking);
-    // console.log('teraType', teraTypeRanking);
-    // console.log('move', moveRanking);
 
     return {
       id: value.id,

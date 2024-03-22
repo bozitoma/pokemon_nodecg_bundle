@@ -16,6 +16,7 @@ export function GraphicsKP({ listNumber }: Props) {
   const rank = KPdata.rank;
   const name = KPdata.pokemon;
   const score = KPdata.score;
+
   const nameConvert = (name: string) => {
     switch (name) {
       case 'ウーラオス（れんげきのかた）':
@@ -30,6 +31,12 @@ export function GraphicsKP({ listNumber }: Props) {
         return '水オーガポン';
       case 'オーガポン（いしずえのめん）':
         return '岩オーガポン';
+      case 'ガチグマ（アカツキ）':
+        return '暁ガチグマ';
+      case 'ランドロス（れいじゅうフォルム）':
+        return '霊獣ランドロス';
+      case 'キュウコン（アローラのすがた）':
+        return 'アローラキュウコン';
       default:
         return name;
     }

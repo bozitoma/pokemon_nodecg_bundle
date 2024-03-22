@@ -25,7 +25,7 @@ body {
 .party_row {
   display: flex;
   position: relative;
-  margin-bottom: 43px;
+  margin-bottom: 40px;
 }
 
 .score {
