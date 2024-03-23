@@ -21,7 +21,7 @@ export type Prop = {
 };
 
 export function Foo() {
-  const { repParty, repRanking } = useRepList();
+  const { repParty } = useRepList();
   // console.log(repRanking);
 
   const partyList = repParty?.map((e) => {

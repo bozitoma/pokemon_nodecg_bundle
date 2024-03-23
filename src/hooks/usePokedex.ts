@@ -37,7 +37,7 @@ export function usePokedex() {
   // const POKEDEX = pokedex.map((obj) => obj.name);
 
   const { repPokedex } = useRepList();
-  const POKEDEX = repPokedex?.map((obj) => obj.name);
+  const POKEDEX = repPokedex ? (repPokedex?.map((obj) => obj.name) as string[]) : []; //エラー出るので仮で書いてる
 
   const getPokemonIcon = (name: string | null) => {
     const pokeName = repPokedex?.findIndex((data) => data.name === name);
