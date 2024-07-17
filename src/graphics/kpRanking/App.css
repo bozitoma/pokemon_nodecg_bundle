@@ -17,14 +17,14 @@ body {
 
 .list {
   position: relative;
-  top: 225px;
-  left: 48px;
+  top: 187px;
+  left: 55px;
   margin-right: 77px;
 }
 
 .section {
   display: flex;
-  padding-bottom: 40px;
+  padding-bottom: 5px;
 }
 
 .rank {
@@ -40,8 +40,8 @@ body {
 }
 
 .pokemonIcon {
-  height: 80px;
-  width: 80px;
+  height: 64px;
+  width: 64px;
 }
 .name {
   font-family: 'Noto Sans-DisplayBold', Helvetica;
@@ -59,6 +59,18 @@ body {
 .score {
   font-family: 'Noto Sans-DisplayBold', Helvetica;
   font-size: 64px;
+  font-weight: 600;
+  padding-top: 5px;
+  padding-left: 5px;
+
+  text-align: center;
+  width: 80px;
+  height: 80px;
+}
+
+.percent {
+  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  font-size: 32px;
   font-weight: 600;
   padding-top: 5px;
   padding-left: 5px;

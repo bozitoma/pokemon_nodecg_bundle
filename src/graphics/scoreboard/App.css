@@ -28,7 +28,7 @@
 
 /* 控え時の見た目 */
 .Benched {
-  filter: contrast(50%) opacity(0.5);
+  filter: contrast(50%) opacity(0.9);
 }
 
 /* 選出時の見た目 */

@@ -1,6 +1,22 @@
 import './App.css';
 import { useRepList } from '../../hooks/useRepList';
 import { GraphicsKP } from '../../component/battle/GraphicsKP';
+import { memo } from 'react';
+
+const Kp = memo(({ rank }: { rank: number }) => {
+  return (
+    <div className="list">
+      {[...Array(10)].map((_, i) => {
+        const num = i + rank;
+        return (
+          <>
+            <GraphicsKP listNumber={num} />
+          </>
+        );
+      })}
+    </div>
+  );
+});
 
 function App() {
   const { repParty } = useRepList();
@@ -8,7 +24,10 @@ function App() {
   const totalPartyNum = repParty?.length;
   return (
     <div className="wrapper">
-      <div className="list">
+      <Kp rank={1} />
+      <Kp rank={11} />
+      <Kp rank={21} />
+      {/* <div className="list">
         <GraphicsKP listNumber={0} />
         <GraphicsKP listNumber={1} />
         <GraphicsKP listNumber={2} />
@@ -33,7 +52,7 @@ function App() {
         <GraphicsKP listNumber={17} />
         <GraphicsKP listNumber={18} />
         <GraphicsKP listNumber={19} />
-      </div>
+      </div> */}
       <div className="totalParty">{totalPartyNum}</div>
     </div>
   );

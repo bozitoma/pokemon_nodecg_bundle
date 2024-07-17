@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "nodecg": {
-    "compatibleRange": "2.1.11",
+    "compatibleRange": "^1.0.0 || ^2.0.0",
     "dashboardPanels": [
       {
         "name": "Scoreboard_pokemon",

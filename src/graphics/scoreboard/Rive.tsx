@@ -1,6 +1,6 @@
 import { useRive, useStateMachineInput } from '@rive-app/react-canvas';
 import { useEffect } from 'react';
-import rivefile from '../../assets/sazanami.riv';
+import rivefile from '../../assets/championroad.riv';
 import { useRepList } from '../../hooks/useRepList';
 
 export const Rive = () => {

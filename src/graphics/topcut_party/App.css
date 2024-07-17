@@ -7,7 +7,7 @@
 }
 
 body {
-  background: url(../../assets/topcut_party.jpg);
+  background: url(../../assets/topcut.jpg);
 }
 
 .wrapper {
@@ -17,15 +17,16 @@ body {
 
 .list {
   position: relative;
-  top: 265px;
+  top: 240px;
   left: 20px;
-  margin-right: 35px;
+  margin-right: 55px;
 }
 
 .party_row {
   display: flex;
   position: relative;
-  margin-bottom: 40px;
+  width: 420px;
+  margin-bottom: 19px;
 }
 
 .score {
@@ -40,8 +41,8 @@ body {
 }
 
 .pokemonIcon {
-  height: 128px;
-  width: 128px;
+  height: 76px;
+  width: 76px;
 }
 
 .totalParty {

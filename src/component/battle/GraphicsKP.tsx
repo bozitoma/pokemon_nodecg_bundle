@@ -51,6 +51,7 @@ export function GraphicsKP({ listNumber }: Props) {
       <img className="pokemonIcon" src={pokemonIcon} alt="" />
       <div className="name">{nameConvert(name)}</div>
       <div className="score">{score}</div>
+      <div className="percent">%</div>
     </div>
   );
 }

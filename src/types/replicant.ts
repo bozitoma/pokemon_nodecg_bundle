@@ -228,6 +228,30 @@ export interface ReplicantMap {
     Player6: Topcut;
     Player7: Topcut;
     Player8: Topcut;
+    Player9: Topcut;
+    Player10: Topcut;
+    Player11: Topcut;
+    Player12: Topcut;
+    Player13: Topcut;
+    Player14: Topcut;
+    Player15: Topcut;
+    Player16: Topcut;
+    Player17: Topcut;
+    Player18: Topcut;
+    Player19: Topcut;
+    Player20: Topcut;
+    Player21: Topcut;
+    Player22: Topcut;
+    Player23: Topcut;
+    Player24: Topcut;
+    Player25: Topcut;
+    Player26: Topcut;
+    Player27: Topcut;
+    Player28: Topcut;
+    Player29: Topcut;
+    Player30: Topcut;
+    Player31: Topcut;
+    Player32: Topcut;
   };
   Bracket: {
     WQFa: Bracket;
@@ -302,6 +326,30 @@ export const replicantDefaultValues: ReplicantMap = {
     Player6: topcutDefaultValue,
     Player7: topcutDefaultValue,
     Player8: topcutDefaultValue,
+    Player9: topcutDefaultValue,
+    Player10: topcutDefaultValue,
+    Player11: topcutDefaultValue,
+    Player12: topcutDefaultValue,
+    Player13: topcutDefaultValue,
+    Player14: topcutDefaultValue,
+    Player15: topcutDefaultValue,
+    Player16: topcutDefaultValue,
+    Player17: topcutDefaultValue,
+    Player18: topcutDefaultValue,
+    Player19: topcutDefaultValue,
+    Player20: topcutDefaultValue,
+    Player21: topcutDefaultValue,
+    Player22: topcutDefaultValue,
+    Player23: topcutDefaultValue,
+    Player24: topcutDefaultValue,
+    Player25: topcutDefaultValue,
+    Player26: topcutDefaultValue,
+    Player27: topcutDefaultValue,
+    Player28: topcutDefaultValue,
+    Player29: topcutDefaultValue,
+    Player30: topcutDefaultValue,
+    Player31: topcutDefaultValue,
+    Player32: topcutDefaultValue,
   },
   Bracket: {
     WQFa: bracketDefaultValues,
