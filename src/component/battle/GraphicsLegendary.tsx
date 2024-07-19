@@ -96,7 +96,7 @@ export function GraphicsLegendary({ num }: { num: number }) {
 
   const sortedLegendary = repKP
     ? filterLegendary.sort((a, b) => b.score - a.score)
-    : [...Array(5)].map(() => KPDefaultValues);
+    : [...Array(12)].map(() => KPDefaultValues);
 
   console.log(sortedLegendary);
 
@@ -122,7 +122,7 @@ export function GraphicsLegendary({ num }: { num: number }) {
 
         return isolate;
       })
-    : [...Array(5)].map(() => {
+    : [...Array(12)].map(() => {
         return [...Array(10)].map(() => ({
           name: '',
           score: 0,
@@ -154,10 +154,18 @@ export function GraphicsLegendary({ num }: { num: number }) {
           return (
             <div className="pear">
               {/* <div className="rank">{i + 1}</div> */}
-              <img className="pokemonIcon" src={getPokemonIcon(NEWK2P[num][i].name)} alt="" />
+              <img
+                className="pokemonIcon"
+                src={
+                  NEWK2P[num][i]
+                    ? getPokemonIcon(NEWK2P[num][i].name)
+                    : 'https://resource.pokemon-home.com/battledata/img/item/item_0004.png'
+                }
+                alt=""
+              />
               {/* <div className="name">{nameConvert(NEWK2P[num][i].name)}</div> */}
               <div className="scoreArea">
-                <div className="score">{NEWK2P[num][i].score}</div>
+                <div className="score">{NEWK2P[num][i] ? NEWK2P[num][i].score : ''}</div>
                 <div className="percent">%</div>
               </div>
               {/* <div className="percent">%</div> */}

@@ -56,6 +56,16 @@
         "height": 1080
       },
       {
+        "file": "kpRanking31_60.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "kpRanking60_86.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "bracket.html",
         "width": 1920,
         "height": 1080
@@ -72,6 +82,16 @@
       },
       {
         "file": "legendaryRanking.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "legendaryRanking6_10.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "legendaryRanking11_15.html",
         "width": 1920,
         "height": 1080
       }

@@ -17,7 +17,7 @@ body {
 
 .list {
   position: relative;
-  top: 215px;
+  top: 270px;
   left: 10px;
   margin-right: 215px;
 }
@@ -62,7 +62,7 @@ margin-left:auto;
 
 .totalParty {
   position: absolute;
-  top: 685px;
+  top: 735px;
   right: 250px;
 
   /* フォント関連の設定 */

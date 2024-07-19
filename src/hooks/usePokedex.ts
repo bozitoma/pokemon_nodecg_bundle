@@ -41,7 +41,8 @@ export function usePokedex() {
 
   const getPokemonIcon = (name: string | null) => {
     const newName = name === 'ウーラオス' ? 'ウーラオス（れんげきのかた）' : name;
-    const pokeName = repPokedex?.findIndex((data) => data.name === newName);
+    const newName2 = newName === 'テラパゴス' ? 'テラパゴス（ノーマルフォルム）' : newName;
+    const pokeName = repPokedex?.findIndex((data) => data.name === newName2);
     if (typeof pokeName !== 'undefined' && repPokedex) {
       const index = repPokedex[pokeName];
       const icon =
