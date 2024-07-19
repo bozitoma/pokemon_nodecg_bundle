@@ -6,7 +6,13 @@ export const useTopcut = () => {
   const KPdata = repKP ? repKP : [KPDefaultValues];
 
   const getKPscore = (name: string) => {
-    const pokemonName = KPdata.find((kp) => kp.pokemon === name);
+    console.log(name);
+
+    const newName =
+      name === 'ウーラオス（れんげきのかた）' || name === 'ウーラオス（いちげきのかた）'
+        ? 'ウーラオス'
+        : name;
+    const pokemonName = KPdata.find((kp) => kp.pokemon === newName);
     const KPscore = pokemonName ? pokemonName.score : 0;
 
     return KPscore;

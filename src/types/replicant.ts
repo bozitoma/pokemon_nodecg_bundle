@@ -236,22 +236,22 @@ export interface ReplicantMap {
     Player14: Topcut;
     Player15: Topcut;
     Player16: Topcut;
-    Player17: Topcut;
-    Player18: Topcut;
-    Player19: Topcut;
-    Player20: Topcut;
-    Player21: Topcut;
-    Player22: Topcut;
-    Player23: Topcut;
-    Player24: Topcut;
-    Player25: Topcut;
-    Player26: Topcut;
-    Player27: Topcut;
-    Player28: Topcut;
-    Player29: Topcut;
-    Player30: Topcut;
-    Player31: Topcut;
-    Player32: Topcut;
+    // Player17: Topcut;
+    // Player18: Topcut;
+    // Player19: Topcut;
+    // Player20: Topcut;
+    // Player21: Topcut;
+    // Player22: Topcut;
+    // Player23: Topcut;
+    // Player24: Topcut;
+    // Player25: Topcut;
+    // Player26: Topcut;
+    // Player27: Topcut;
+    // Player28: Topcut;
+    // Player29: Topcut;
+    // Player30: Topcut;
+    // Player31: Topcut;
+    // Player32: Topcut;
   };
   Bracket: {
     WQFa: Bracket;
@@ -334,22 +334,22 @@ export const replicantDefaultValues: ReplicantMap = {
     Player14: topcutDefaultValue,
     Player15: topcutDefaultValue,
     Player16: topcutDefaultValue,
-    Player17: topcutDefaultValue,
-    Player18: topcutDefaultValue,
-    Player19: topcutDefaultValue,
-    Player20: topcutDefaultValue,
-    Player21: topcutDefaultValue,
-    Player22: topcutDefaultValue,
-    Player23: topcutDefaultValue,
-    Player24: topcutDefaultValue,
-    Player25: topcutDefaultValue,
-    Player26: topcutDefaultValue,
-    Player27: topcutDefaultValue,
-    Player28: topcutDefaultValue,
-    Player29: topcutDefaultValue,
-    Player30: topcutDefaultValue,
-    Player31: topcutDefaultValue,
-    Player32: topcutDefaultValue,
+    // Player17: topcutDefaultValue,
+    // Player18: topcutDefaultValue,
+    // Player19: topcutDefaultValue,
+    // Player20: topcutDefaultValue,
+    // Player21: topcutDefaultValue,
+    // Player22: topcutDefaultValue,
+    // Player23: topcutDefaultValue,
+    // Player24: topcutDefaultValue,
+    // Player25: topcutDefaultValue,
+    // Player26: topcutDefaultValue,
+    // Player27: topcutDefaultValue,
+    // Player28: topcutDefaultValue,
+    // Player29: topcutDefaultValue,
+    // Player30: topcutDefaultValue,
+    // Player31: topcutDefaultValue,
+    // Player32: topcutDefaultValue,
   },
   Bracket: {
     WQFa: bracketDefaultValues,

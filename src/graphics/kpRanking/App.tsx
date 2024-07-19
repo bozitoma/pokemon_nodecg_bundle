@@ -24,9 +24,9 @@ function App() {
   const totalPartyNum = repParty?.length;
   return (
     <div className="wrapper">
-      <Kp rank={1} />
-      <Kp rank={11} />
-      <Kp rank={21} />
+      <Kp rank={0} />
+      <Kp rank={10} />
+      <Kp rank={20} />
       {/* <div className="list">
         <GraphicsKP listNumber={0} />
         <GraphicsKP listNumber={1} />
