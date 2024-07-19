@@ -36,6 +36,7 @@ export function usePokedex() {
   // ポケモン図鑑の名前をリストにした関数
   // const POKEDEX = pokedex.map((obj) => obj.name);
 
+  // アイコンを出すための応急処置
   const nameConvert = (name: string | null) => {
     switch (name) {
       case 'ウーラオス':
