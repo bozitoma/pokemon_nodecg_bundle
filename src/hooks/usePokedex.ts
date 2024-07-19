@@ -36,13 +36,25 @@ export function usePokedex() {
   // ポケモン図鑑の名前をリストにした関数
   // const POKEDEX = pokedex.map((obj) => obj.name);
 
+  const nameConvert = (name: string | null) => {
+    switch (name) {
+      case 'ウーラオス':
+        return 'ウーラオス（れんげきのかた）';
+      case 'テラパゴス':
+        return 'テラパゴス（ノーマルフォルム）';
+      case 'オーガポン':
+        return 'オーガポン（みどりのめん）';
+      default:
+        return name;
+    }
+  };
+
   const { repPokedex } = useRepList();
   const POKEDEX = repPokedex ? (repPokedex?.map((obj) => obj.name) as string[]) : []; //エラー出るので仮で書いてる
 
   const getPokemonIcon = (name: string | null) => {
-    const newName = name === 'ウーラオス' ? 'ウーラオス（れんげきのかた）' : name;
-    const newName2 = newName === 'テラパゴス' ? 'テラパゴス（ノーマルフォルム）' : newName;
-    const pokeName = repPokedex?.findIndex((data) => data.name === newName2);
+    const newName = nameConvert(name);
+    const pokeName = repPokedex?.findIndex((data) => data.name === newName);
     if (typeof pokeName !== 'undefined' && repPokedex) {
       const index = repPokedex[pokeName];
       const icon =
