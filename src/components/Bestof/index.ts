@@ -1,0 +1,1 @@
+export { Bestof } from './Bestof';

@@ -1,13 +1,22 @@
+import { TopcutPlayerSelector } from '../../components/Topcut/TopcutPlayerSelector';
+import { useReplicant } from '../../hooks/useReplicant';
 import './App.css';
-import { RecoilRoot } from 'recoil';
-
-import { TopcutManegementUnit } from '../../component/topcut/TopcutManegementUnit';
 
 function App() {
+  const [topcutRep] = useReplicant('Topcut');
+  const topcut = topcutRep?.players?.find((player) => player.place === 1) ?? {
+    place: 1,
+    name: 'なし',
+    party: ['なし', 'なし', 'なし', 'なし', 'なし', 'なし'],
+  };
+
   return (
-    <RecoilRoot>
-      <TopcutManegementUnit />
-    </RecoilRoot>
+    <>
+      <TopcutPlayerSelector topcutPlace={1} />
+      {topcut.place}
+      {topcut.name}
+      {topcut.party.map((pokemon) => pokemon)}
+    </>
   );
 }
 

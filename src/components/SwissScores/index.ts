@@ -1,0 +1,1 @@
+export { SwissScores } from './SwissScores';

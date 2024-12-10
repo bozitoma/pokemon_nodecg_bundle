@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { replicantDefaultValues, type ReplicantMap } from '../types/replicant';
+import type { ReplicantMap } from '../types/replicant';
+import { replicantDefaultValues } from '../utils/defaultValues/replicat';
 
 export const useReplicant = <T extends keyof ReplicantMap>(
   name: T

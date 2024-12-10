@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/pokedex"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("POKEDEX_URL")
+}
+
+model ability {
+  id         Int     @id @default(autoincrement())
+  name       String?
+  effect     String?
+  generation String?
+}
+
+model item {
+  id     Int     @id @default(autoincrement())
+  name   String?
+  effect String?
+  img    String?
+}
+
+model move {
+  id       Int     @id @default(autoincrement())
+  name     String?
+  type     String?
+  power    Int?
+  accuracy Int?
+  pp       Int?
+  category String?
+  priority Int?
+  effect   String?
+}
+
+model pokemon {
+  id         Int     @id @default(autoincrement())
+  no         Int?
+  variable   Int?
+  name       String?
+  ability1   String?
+  ability2   String?
+  ability3   String?
+  type1      String?
+  type2      String?
+  bs_H       Int?
+  bs_A       Int?
+  bs_B       Int?
+  bs_C       Int?
+  bs_D       Int?
+  bs_S       Int?
+  bs_total   Int?
+  generation Int?
+  img1       String?
+  img2       String?
+}
+
+model type {
+  id             Int     @id @default(autoincrement())
+  jp             String?
+  eng            String?
+  icon           String?
+  terastall_icon String?
+}

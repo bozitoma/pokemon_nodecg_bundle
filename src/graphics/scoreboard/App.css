@@ -79,6 +79,7 @@
 
   /* フォント関連の設定 */
   font-family: 'Noto Sans-DisplayBold', Helvetica;
+  color: black;
   font-size: 32px;
   font-weight: 600;
   letter-spacing: 0.1em;

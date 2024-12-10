@@ -10,35 +10,27 @@
     "build": "tsc && vite build",
     "watch": "vite build --watch",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prisma:generate:pokedex": "prisma generate --schema prisma/pokedex.schema.prisma",
+    "prisma:generate:tournament": "prisma generate --schema prisma/tournament.schema.prisma",
+    "prisma:generate": "run-p prisma:generate:pokedex prisma:generate:tournament",
+    "prisma:studio:pokedex": "prisma studio --schema prisma/pokedex.schema.prisma",
+    "prisma:studio:tournament": "prisma studio --schema prisma/tournament.schema.prisma"
+
   },
   "nodecg": {
     "compatibleRange": "^1.0.0 || ^2.0.0",
     "dashboardPanels": [
       {
-        "name": "Scoreboard_pokemon",
-        "title": "1.Scoreboard",
-        "file": "scoreboard.html",
+        "name": "Pokemon_scoreboard",
+        "title": "1 | Scoreboard",
+        "file": "scoreboard2.html",
         "fullbleed": true,
         "headerColor": "#525F78"
       },
       {
-        "name": "database_pokemon",
-        "title": "2.database",
-        "file": "database_table.html",
-        "fullbleed": true,
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "bracket_pokemon",
-        "title": "3.bracket",
-        "file": "bracket.html",
-        "fullbleed": true,
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "topcut",
-        "title": "4.topcut",
+        "name": "Pokemon_topcut",
+        "title": "2 | Topcut",
         "file": "topcut.html",
         "fullbleed": true,
         "headerColor": "#525F78"
@@ -110,11 +102,13 @@
     "better-sqlite3": "^8.7.0",
     "express": "^4.18.3",
     "graphql": "^16.8.1",
+    "jotai": "^2.10.3",
     "onchange": "^7.1.0",
-    "prisma": "^5.10.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-sortablejs": "^6.1.4",
     "recoil": "^0.7.7",
+    "sortablejs": "^1.15.6",
     "use-immer": "^0.9.0"
   },
   "devDependencies": {
@@ -122,6 +116,7 @@
     "@types/better-sqlite3": "^7.6.9",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/sortablejs": "^1.15.8",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
@@ -131,6 +126,7 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "globby": "^13.1.4",
     "prettier": "2.8.8",
+    "prisma": "^6.0.1",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-node-externals": "^5.1.2",
     "ts-nodecg": "^0.3.1",

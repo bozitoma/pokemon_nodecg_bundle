@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/tournament"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("TOURNAMENT_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model K2P {
+  rank    Int?
+  pokemon String?
+  score   Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model K2P_KPtop10 {
+  rank    Int?
+  pokemon String?
+  score   Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model K3P {
+  rank    Int?
+  pokemon String?
+  score   Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model K4P {
+  rank    Int?
+  pokemon String?
+  score   Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model K5P {
+  rank    Int?
+  pokemon String?
+  score   Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model K6P {
+  rank    Int?
+  pokemon String?
+  score   Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model KP {
+  rank    Int?
+  pokemon String?
+  score   Int?
+
+  @@ignore
+}
+
+model Party {
+  id          Int     @id @default(autoincrement())
+  accountID   String?
+  player_name String?
+  pokemon1    String?
+  pokemon2    String?
+  pokemon3    String?
+  pokemon4    String?
+  pokemon5    String?
+  pokemon6    String?
+}
+
+model Player {
+  id          Int     @id @default(autoincrement())
+  accountID   String?
+  player_name String?
+  party_img   String?
+  status      String?
+}
+
+model Pokemon {
+  id           Int     @id @default(autoincrement())
+  accountID    String?
+  player_name  String?
+  pokemon_name String?
+  gender       String?
+  type1        String?
+  type2        String?
+  teraType     String?
+  ability      String?
+  item         String?
+  move1        String?
+  move2        String?
+  move3        String?
+  move4        String?
+}
+
+model Ranking {
+  id       Int     @id @default(autoincrement())
+  pokemon  String?
+  item     Bytes?
+  ability  Bytes?
+  teraType Bytes?
+  move     Bytes?
+}

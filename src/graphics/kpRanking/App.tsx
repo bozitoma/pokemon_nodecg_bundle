@@ -1,32 +1,42 @@
 import './App.css';
 import { useRepList } from '../../hooks/useRepList';
 import { GraphicsKP } from '../../component/battle/GraphicsKP';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
+import { useReplicant } from '../../hooks/useReplicant';
 
-const Kp = memo(({ rank }: { rank: number }) => {
-  return (
-    <div className="list">
-      {[...Array(10)].map((_, i) => {
-        const num = i + rank;
-        return (
-          <>
-            <GraphicsKP listNumber={num} />
-          </>
-        );
-      })}
-    </div>
-  );
-});
+// const Kp = memo(({ rank }: { rank: number }) => {
+//   return (
+//     <div className="list">
+//       {[...Array(10)].map((_, i) => {
+//         const num = i + rank;
+//         return (
+//           <>
+//             <GraphicsKP listNumber={num} />
+//           </>
+//         );
+//       })}
+//     </div>
+//   );
+// });
 
 function App() {
-  const { repParty } = useRepList();
-  // パーティの総数
-  const totalPartyNum = repParty?.length;
+  const [pokemonRep] = useReplicant('Pokemon');
+  const [battlePartyRep] = useReplicant('BattleParty');
+  const pokemonIcon = useMemo(
+    () =>
+      pokemonRep?.find((pokemonRep) => pokemonRep.name === battlePartyRep?.Player1.pokemon1.name)
+        ?.img1 ?? '',
+    [pokemonRep, battlePartyRep]
+  );
+  // const { repParty } = useRepList();
+  // // パーティの総数
+  // const totalPartyNum = repParty?.length;
   return (
     <div className="wrapper">
-      <Kp rank={0} />
+      <img src={pokemonIcon} alt="" />
+      {/* <Kp rank={0} />
       <Kp rank={10} />
-      <Kp rank={20} />
+      <Kp rank={20} /> */}
       {/* <div className="list">
         <GraphicsKP listNumber={0} />
         <GraphicsKP listNumber={1} />
@@ -53,7 +63,7 @@ function App() {
         <GraphicsKP listNumber={18} />
         <GraphicsKP listNumber={19} />
       </div> */}
-      <div className="totalParty">{totalPartyNum}</div>
+      {/* <div className="totalParty">{totalPartyNum}</div> */}
     </div>
   );
 }
