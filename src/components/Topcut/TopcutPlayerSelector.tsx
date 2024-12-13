@@ -3,9 +3,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useReplicant } from '../../hooks/useReplicant';
 import { useCallback, useMemo } from 'react';
 import { PokemonNum } from '../../types/scoreboard';
-import { pokemonNumList } from '../../utils/const';
-
-const emptyParty = ['なし', 'なし', 'なし', 'なし', 'なし', 'なし'];
+import { emptyParty, pokemonNumList } from '../../utils/const';
 
 export const TopcutPlayerSelector = ({ topcutPlace }: { topcutPlace: number }) => {
   const [playerRep] = useReplicant('Player');
@@ -16,16 +14,14 @@ export const TopcutPlayerSelector = ({ topcutPlace }: { topcutPlace: number }) =
     [topcutRep, topcutPlace]
   );
   const players = useMemo(
-    () => playerRep?.map((player) => player.player_name || '') || [],
+    () => [...new Set(playerRep?.map((player) => player.player_name || '')), 'なし'] || [],
     [playerRep]
   );
-  const party = useCallback(
+  const getParty = useCallback(
     (playerName: string) => {
-      console.log('partiesRep', partiesRep);
-
       if (!partiesRep) return emptyParty;
       const partyInfo = [...partiesRep].find((party) => party.player_name === playerName);
-      const result = pokemonNumList.map((key) => partyInfo?.[key as PokemonNum] ?? 'なし');
+      const result = pokemonNumList.map((key) => partyInfo?.[key as PokemonNum] ?? '');
       return result;
     },
     [partiesRep]
@@ -35,13 +31,13 @@ export const TopcutPlayerSelector = ({ topcutPlace }: { topcutPlace: number }) =
       if (!topcutRep) return;
       console.log(newPlayer);
       setTopcutRep({
-        ...topcutRep,
+        total: topcutRep.total,
         players: topcutRep.players?.map((player) =>
           player.place === topcutPlace
             ? {
                 ...player,
                 name: newPlayer ?? 'なし',
-                party: party(newPlayer ?? 'なし'),
+                party: getParty(newPlayer ?? 'なし'),
               }
             : player
         ),
@@ -57,7 +53,7 @@ export const TopcutPlayerSelector = ({ topcutPlace }: { topcutPlace: number }) =
       onChange={onChange}
       options={players}
       sx={{ width: 150 }}
-      renderInput={(params) => <TextField {...params} label="ポケモン" variant="standard" />}
+      renderInput={(params) => <TextField {...params} label="プレイヤー" variant="standard" />}
     />
   );
 };

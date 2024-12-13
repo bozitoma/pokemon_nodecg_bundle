@@ -16,7 +16,6 @@
     "prisma:generate": "run-p prisma:generate:pokedex prisma:generate:tournament",
     "prisma:studio:pokedex": "prisma studio --schema prisma/pokedex.schema.prisma",
     "prisma:studio:tournament": "prisma studio --schema prisma/tournament.schema.prisma"
-
   },
   "nodecg": {
     "compatibleRange": "^1.0.0 || ^2.0.0",
@@ -24,7 +23,7 @@
       {
         "name": "Pokemon_scoreboard",
         "title": "1 | Scoreboard",
-        "file": "scoreboard2.html",
+        "file": "scoreboard.html",
         "fullbleed": true,
         "headerColor": "#525F78"
       },
@@ -34,11 +33,23 @@
         "file": "topcut.html",
         "fullbleed": true,
         "headerColor": "#525F78"
+      },
+      {
+        "name": "Pokemon_data",
+        "title": "3 | Data",
+        "file": "pokemon_data.html",
+        "fullbleed": true,
+        "headerColor": "#525F78"
       }
     ],
     "graphics": [
       {
         "file": "scoreboard.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "pokemon_ranking.html",
         "width": 1920,
         "height": 1080
       },
@@ -58,32 +69,7 @@
         "height": 1080
       },
       {
-        "file": "bracket.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "k2p_kpTop10.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
         "file": "topcut_party.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "legendaryRanking.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "legendaryRanking6_10.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "legendaryRanking11_15.html",
         "width": 1920,
         "height": 1080
       }

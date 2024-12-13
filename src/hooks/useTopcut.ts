@@ -1,13 +1,11 @@
 // import { useRepList } from '../hooks/useRepList';
 // import { KPDefaultValues } from '../types/replicant';
+// import { useReplicant } from './useReplicant';
 
 // export const useTopcut = () => {
-//   const { repKP } = useRepList();
-//   const KPdata = repKP ? repKP : [KPDefaultValues];
-
+//   const [topcutRep] = useReplicant('Topcut');
+//   const [KPRep] = useReplicant('KP');
 //   const getKPscore = (name: string) => {
-//     console.log(name);
-
 //     const newName =
 //       name === 'ウーラオス（れんげきのかた）' || name === 'ウーラオス（いちげきのかた）'
 //         ? 'ウーラオス'
@@ -17,7 +15,5 @@
 
 //     return KPscore;
 //   };
-//   return {
-//     getKPscore,
-//   };
+//   return { getKPscore };
 // };

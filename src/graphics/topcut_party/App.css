@@ -18,7 +18,7 @@ body {
 .list {
   position: relative;
   top: 270px;
-  left: 10px;
+  left: 20px;
   margin-right: 215px;
 }
 
@@ -73,8 +73,8 @@ margin-left:auto;
 
 .maxPartyKP {
   position: absolute;
-  top: 933px;
-  left: 1660px;
+  top: 870px;
+  left: 1280px;
 
   /* フォント関連の設定 */
   font-family: 'Noto Sans-DisplayBold', Helvetica;
@@ -83,5 +83,5 @@ margin-left:auto;
 }
 
 .maxParty {
-  padding: 120px 0 0 0;
+  padding: 12px 0 0 0;
 }

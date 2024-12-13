@@ -1,10 +1,10 @@
 import { useRive, useStateMachineInput } from '@rive-app/react-canvas';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import rivefile from '../../assets/championroad.riv';
-import { useRepList } from '../../hooks/useRepList';
+import { useReplicant } from '../../hooks/useReplicant';
 
 export const Rive = () => {
-  const { repInformation } = useRepList();
+  const [scoreboard] = useReplicant('Scoreboard');
 
   const { rive, RiveComponent } = useRive({
     src: rivefile,
@@ -13,18 +13,18 @@ export const Rive = () => {
     autoplay: true,
   });
 
-  const Round = repInformation?.Round;
-  const BestOf = repInformation?.BestOf;
-  const Name1P = repInformation?.Player1.name;
-  const Name2P = repInformation?.Player2.name;
-  const Score1P = repInformation?.Player1.score;
-  const Score2P = repInformation?.Player2.score;
-  const SwissWin1P = repInformation?.Player1.swiss.win;
-  const SwissLose1P = repInformation?.Player1.swiss.lose;
-  const SwissDraw1P = repInformation?.Player1.swiss.draw;
-  const SwissWin2P = repInformation?.Player2.swiss.win;
-  const SwissLose2P = repInformation?.Player2.swiss.lose;
-  const SwissDraw2P = repInformation?.Player2.swiss.draw;
+  const Round = useMemo(() => scoreboard?.Round, [scoreboard]);
+  const BestOf = useMemo(() => scoreboard?.BestOf, [scoreboard]);
+  const Name1P = useMemo(() => scoreboard?.Player1.name, [scoreboard]);
+  const Name2P = useMemo(() => scoreboard?.Player2.name, [scoreboard]);
+  const Score1P = useMemo(() => scoreboard?.Player1.score, [scoreboard]);
+  const Score2P = useMemo(() => scoreboard?.Player2.score, [scoreboard]);
+  const SwissWin1P = useMemo(() => scoreboard?.Player1.swiss.win, [scoreboard]);
+  const SwissLose1P = useMemo(() => scoreboard?.Player1.swiss.lose, [scoreboard]);
+  const SwissDraw1P = useMemo(() => scoreboard?.Player1.swiss.draw, [scoreboard]);
+  const SwissWin2P = useMemo(() => scoreboard?.Player2.swiss.win, [scoreboard]);
+  const SwissLose2P = useMemo(() => scoreboard?.Player2.swiss.lose, [scoreboard]);
+  const SwissDraw2P = useMemo(() => scoreboard?.Player2.swiss.draw, [scoreboard]);
 
   const oldName1P = rive?.getTextRunValue('player1Name');
   const oldName2P = rive?.getTextRunValue('player2Name');
@@ -110,11 +110,7 @@ export const Rive = () => {
       rive?.setTextRunValue('player2SwissLose', String(SwissLose2P));
       rive?.setTextRunValue('player2SwissDraw', String(SwissDraw2P));
     }
-  }, [repInformation]);
+  }, [scoreboard]);
 
-  return (
-    <>
-      <>{repInformation !== undefined && <RiveComponent style={{ width: 1920, height: 1080 }} />}</>
-    </>
-  );
+  return scoreboard ? <RiveComponent style={{ width: 1920, height: 1080 }} /> : null;
 };

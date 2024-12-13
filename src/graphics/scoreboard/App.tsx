@@ -1,14 +1,13 @@
 import './App.css';
-import { RecoilRoot } from 'recoil';
+import { OverlayGraphics } from './components/Overlay.graphics';
 import { Rive } from './Rive';
-import { GraphicsOverlay } from '../../component/battle/GraphicsOverlay';
 
 function App() {
   return (
-    <RecoilRoot>
-      <GraphicsOverlay />
+    <>
+      <OverlayGraphics />
       <Rive />
-    </RecoilRoot>
+    </>
   );
 }
 

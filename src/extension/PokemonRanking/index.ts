@@ -1,0 +1,1 @@
+export { pokemonRanking } from './PokemonRanking';

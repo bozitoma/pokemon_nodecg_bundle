@@ -3,11 +3,11 @@ import { Divider, Box, Stack } from '@mui/material';
 import { memo } from 'react';
 
 type Props = {
-  text: string;
+  title: string;
   padding?: number;
 };
 
-export const TitleDivider = memo(({ text, padding }: Props) => {
+export const TitleDivider = memo(({ title, padding }: Props) => {
   return (
     <Stack
       sx={{
@@ -24,7 +24,7 @@ export const TitleDivider = memo(({ text, padding }: Props) => {
             padding: padding,
           }}
         >
-          {text}
+          {title}
         </Box>
       </Divider>
     </Stack>

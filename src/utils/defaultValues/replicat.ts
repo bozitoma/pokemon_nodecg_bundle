@@ -1,6 +1,7 @@
 import { ReplicantMap } from '../../types/replicant';
 import { battlePokemonDefaultValue } from './battlePokemon';
 import { playerInfoDefaultValues } from './playerInfo';
+import { pokemonRankingDefaultValue, rankingDefaultValue } from './ranking';
 
 // Replicantsの初期値を定義
 export const replicantDefaultValues: ReplicantMap = {
@@ -64,5 +65,27 @@ export const replicantDefaultValues: ReplicantMap = {
       pokemon5: battlePokemonDefaultValue,
       pokemon6: battlePokemonDefaultValue,
     },
+  },
+  KP: rankingDefaultValue,
+  K2P: rankingDefaultValue,
+  K3P: rankingDefaultValue,
+  K4P: rankingDefaultValue,
+  K5P: rankingDefaultValue,
+  K6P: rankingDefaultValue,
+  Topcut_KP: rankingDefaultValue,
+  Topcut_K2P: rankingDefaultValue,
+  Topcut_K3P: rankingDefaultValue,
+  Topcut_K4P: rankingDefaultValue,
+  Topcut_K5P: rankingDefaultValue,
+  Topcut_K6P: rankingDefaultValue,
+  PokemonRanking: pokemonRankingDefaultValue,
+  Topcut_PokemonRanking: pokemonRankingDefaultValue,
+  PokemonData: {
+    rank: 0,
+    total: 0,
+    teraType: {},
+    ability: {},
+    item: {},
+    moves: {},
   },
 };

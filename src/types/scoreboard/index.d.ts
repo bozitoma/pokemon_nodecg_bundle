@@ -39,7 +39,7 @@ export type BattlePokemon = {
 export type PokemonNum = `pokemon${1 | 2 | 3 | 4 | 5 | 6}`
 export type Party = { [pokemon in PokemonNum]: Pokemon };
 export type BattleState = 'Benched' | 'Active' | 'Fainting';
-export type StatusAilment = 'なし' | 'PSN' | 'BRN' | 'FRZ' | 'PAR' | 'SLP' | undefined;
+export type StatusAilment = 'なし' | 'PSN' | 'BRN' | 'FRZ' | 'PAR' | 'SLP';
 export type Gender = 'male' | 'female' | 'none';
 export type Gender_JP = '♂' | '♀' | 'なし';
 export type PokemonType =
@@ -82,8 +82,7 @@ export type TerastalType =
   | 'dark'
   | 'steel'
   | 'fairy'
-  | 'stellar'
-  | undefined;
+  | 'stellar';
 export type PokemonType_JP =
   | 'ノーマル'
   | 'ほのお'

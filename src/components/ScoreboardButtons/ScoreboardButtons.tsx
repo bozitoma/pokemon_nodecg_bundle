@@ -113,7 +113,7 @@ export const ScoreboardButtons = () => {
         (acc, [pokemonNum, pokemon]) => ({
           ...acc,
           [pokemonNum]: {
-            ...pokemon,
+            ...(typeof pokemon === 'object' && pokemon !== null ? pokemon : {}),
             name: 'なし',
             teraType: 'normal',
             battleState: 'Benched',
@@ -128,7 +128,7 @@ export const ScoreboardButtons = () => {
         (acc, [pokemonNum, pokemon]) => ({
           ...acc,
           [pokemonNum]: {
-            ...pokemon,
+            ...(typeof pokemon === 'object' && pokemon !== null ? pokemon : {}),
             name: 'なし',
             teraType: 'normal',
             battleState: 'Benched',

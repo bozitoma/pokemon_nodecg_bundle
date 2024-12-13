@@ -1,0 +1,1 @@
+export { PokemonData } from './PokemonData';

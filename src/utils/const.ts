@@ -5,6 +5,11 @@ export const pokemonNumList: PokemonNum[] = Array.from(
   (_, i) => `pokemon${i + 1}` as PokemonNum
 );
 
+export const emptyParty: string[] = Array.from(
+  { length: 6 },
+  () => 'なし'
+);
+
 // export const translateType: { [key in TerastalType_JP]: TerastalType } = {
 //   ノーマル: 'normal',
 //   ほのお: 'fire',

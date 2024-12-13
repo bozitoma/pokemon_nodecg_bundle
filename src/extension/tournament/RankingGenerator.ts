@@ -1,8 +1,4 @@
-type CombinationScore = {
-  combination: string;
-  score: number;
-  rate: string;
-};
+import { RankingData } from "../../types/ranking";
 
 export class RankingGenerator {
   scores: Record<string, number>;
@@ -13,7 +9,7 @@ export class RankingGenerator {
     this.total = total;
   }
 
-  generate(): { total: number; ranking: CombinationScore[] } {
+  generate(): { total: number; ranking: RankingData[] } {
     // オブジェクトを配列に変換し、scoreで降順ソート
     const sortedRanking = Object.entries(this.scores)
       .map(([combination, score]) => ({
@@ -24,7 +20,7 @@ export class RankingGenerator {
       .sort((a, b) => b.score - a.score);
 
     // ランキングデータを作成
-    const ranking: CombinationScore[] = [];
+    const ranking: RankingData[] = [];
     let currentRank = 1; // 現在の順位
     let previousScore: number | null = null; // 直前のスコア
 
@@ -35,6 +31,8 @@ export class RankingGenerator {
       }
 
       ranking.push({
+        id: index + 1, // sort用にIDを追加
+        place: currentRank,
         combination: entry.combination,
         score: entry.score,
         rate: `${entry.rate}%`,

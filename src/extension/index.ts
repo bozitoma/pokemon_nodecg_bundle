@@ -9,6 +9,9 @@ import type { NodeCG } from './nodecg';
 import { pokedex } from './pokedex';
 import { tournament } from './tournament';
 import { PlayerDatabase } from './tournament/PlayerDatabase';
+import { KPs } from './KPs';
+import { pokemonRanking } from './PokemonRanking';
+import { topcutKPs } from './TopcutKPs';
 // import { pokedexDb } from './prisma';
 
 // import { PrismaClient } from '@prisma/client';
@@ -42,6 +45,9 @@ export default (nodecg: NodeCG) => {
   tournament(nodecg);
   pokedex(nodecg)
   timer(nodecg);
+  KPs(nodecg);
+  pokemonRanking(nodecg);
+  topcutKPs(nodecg);
   // pokedex(nodecg);
   // // Pokedexをインポートするextension
   // pokedex(nodecg);

@@ -12,12 +12,11 @@ type Props = {
 };
 
 export const PokemonAvatar = (props: Props) => {
-  // const battleState = useAtomValue(battleStateAtomFamily(props));
   const [battlePartyRep] = useReplicant('BattleParty');
-  const [pokemonRep] = useReplicant('Pokemon');
+  const [pokedexRep] = useReplicant('Pokedex');
   const battleState = useMemo(() => battlePartyRep?.[props.playerSide]?.[props.pokemonNum]?.battleState ?? '', [battlePartyRep, props.playerSide, props.pokemonNum]);
   const pokemonName = useMemo(() => battlePartyRep?.[props.playerSide]?.[props.pokemonNum]?.name ?? '', [battlePartyRep, props.playerSide, props.pokemonNum]);
-  const pokemonIcon = useMemo(() => pokemonRep?.find((pokemonRep) => pokemonRep.name === pokemonName)?.img1 ?? '', [pokemonRep, pokemonName]);
+  const pokemonIcon = useMemo(() => pokedexRep?.find((pokemon) => pokemon.name === pokemonName)?.img1 ?? '', [pokedexRep, pokemonName]);
   return (
     <>
       <StatusAilmentBadge playerSide={props.playerSide} pokemonNum={props.pokemonNum}>

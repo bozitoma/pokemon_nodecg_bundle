@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1920px;
+  color: aliceblue;
+}
+
+body {
+  background: url(../../assets/pokemon_data.jpg);
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.pokemonName {
+  position: absolute;
+  top: 10px;
+  left: 70px;
+  font-size: 80px;
+}
+
+.pokemonIcon {
+  position: absolute;
+  top: 200px;
+  left: 110px;
+  img {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+.pokemonTotal {
+  position: absolute;
+  top: 260px;
+  left: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 2px; */
+  .pokemonTotalPlace {
+    font-size: 36px;
+  }
+  .pokemonTotalRate {
+    font-size: 18px;
+  }
+}
+
+.topcutRate {
+  position: absolute;
+  top: 423px;
+  left: 500px;
+  font-size: 48px;
+}
+
+.type {
+  position: absolute;
+  top: 557px;
+  left: 250px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 24px;
+  .typeWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center; /* Add vertical centering */
+    img {
+      height: 48px;
+      width: 48px;
+    }
+  }
+}
+
+.ability {
+  position: absolute;
+  top: 635px;
+  left: 250px;
+  font-size: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 150px;
+  justify-content: center;
+}
+
+.baseStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px 210px;
+  font-size: 42px;
+  position: absolute;
+  top: 815px;
+  left: 250px;
+}
+
+.abilityRanking {
+  position: absolute;
+  top: 263px;
+  left: 760px;
+}
+
+.itemRanking {
+  position: absolute;
+  top: 553px;
+  left: 760px;
+}
+
+.teraTypeRanking {
+  position: absolute;
+  top: 844px;
+  left: 760px;
+}
+
+.moveRanking {
+  position: absolute;
+  top: 275px;
+  left: 1365px;
+}
+
+.mod-moveRanking {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 460px;
+  height: 54px;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.ranking{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 460px;
+  margin-bottom: 15px;
+  font-size: 32px;
+}
