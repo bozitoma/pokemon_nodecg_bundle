@@ -7,6 +7,7 @@ export const rankingDefaultValue: Ranking = {
 
 export const pokemonRankingDefaultValue: PokemonRankingData = {
   'なし': {
+    rank: 0,
     total: 0,
     teraType: {
       'ノーマル': 0,

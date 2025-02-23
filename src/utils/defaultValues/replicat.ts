@@ -81,6 +81,7 @@ export const replicantDefaultValues: ReplicantMap = {
   PokemonRanking: pokemonRankingDefaultValue,
   Topcut_PokemonRanking: pokemonRankingDefaultValue,
   PokemonData: {
+    name: 'なし',
     rank: 0,
     total: 0,
     teraType: {},
