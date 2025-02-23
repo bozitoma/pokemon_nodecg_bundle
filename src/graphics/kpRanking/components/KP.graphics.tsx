@@ -45,10 +45,6 @@ const nameConvert = (name: string) => {
       return 'ギラティナ';
     case 'ギラティナ（オリジンフォルム）':
       return 'ギラティナオリジン';
-    case 'ギラティナ（アナザーフォルム）':
-      return 'ギラティナ';
-    case 'ギラティナ（オリジンフォルム）':
-      return 'オリジンギラティナ';
     case 'ディアルガ（オリジンフォルム）':
       return 'オリジンディアルガ';
     case 'パルキア（オリジンフォルム）':
