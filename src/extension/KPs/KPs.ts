@@ -1,6 +1,6 @@
 import type { NodeCG } from '../nodecg';
 import { tournamentDb } from '../prisma';
-import { Party } from '@prisma/generated/tournament';
+import { Party } from '../../../prisma/generated/tournament';
 import { CombinationCounter } from '../tournament/CombinationCounter';
 import { RankingGenerator } from '../tournament/RankingGenerator';
 
