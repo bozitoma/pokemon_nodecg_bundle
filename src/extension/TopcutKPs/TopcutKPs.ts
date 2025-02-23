@@ -14,11 +14,10 @@ export const topcutKPs = async (nodecg: NodeCG) => {
 
   nodecg.listenFor('calcTopcutKPs', () => {
     const topcutRep = nodecg.Replicant('Topcut');
-    log.info('topcutRep', topcutRep.value);
+
     const topcutParties = topcutRep.value?.players
-      .filter((player) => player.place <= (topcutRep.value?.total ?? 0))
+      ?.filter((player) => player.place <= (topcutRep.value?.total ?? 0))
       .map((player) => player.party) ?? [['なし', 'なし', 'なし', 'なし', 'なし', 'なし']];
-    log.info(topcutParties);
     const combinationCounter = new CombinationCounter(topcutParties);
 
     // ランキングを生成
