@@ -26,7 +26,7 @@ body {
   position: absolute;
   top: 200px;
   left: 110px;
-  img {
+  :is(img) {
     height: 300px;
     width: 300px;
   }
@@ -69,7 +69,7 @@ body {
     flex-direction: row;
     gap: 10px;
     align-items: center; /* Add vertical centering */
-    img {
+    :is(img) {
       height: 48px;
       width: 48px;
     }
