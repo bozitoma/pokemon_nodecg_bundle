@@ -14,7 +14,7 @@ export const TopcutPlayerSelector = ({ topcutPlace }: { topcutPlace: number }) =
     [topcutRep, topcutPlace]
   );
   const players = useMemo(
-    () => [...new Set(playerRep?.map((player) => player.player_name || '')), 'なし'] || [],
+    () => [...new Set(playerRep?.map((player) => player.player_name || '')), 'なし'],
     [playerRep]
   );
   const getParty = useCallback(
