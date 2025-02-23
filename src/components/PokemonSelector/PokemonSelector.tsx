@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const PokemonSelector = (props: Props) => {
-  const [pokemonRep] = useReplicant('Pokemon');
+  const [pokemonRep] = useReplicant('Pokedex');
   const [battlePartyRep, setBattlePartyRep] = useReplicant('BattleParty');
   const pokedex = pokemonRep?.map((pokemon) => pokemon.name) ?? [];
   const pokemonName = useMemo(() => {
