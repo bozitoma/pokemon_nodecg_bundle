@@ -1,6 +1,6 @@
 // Replicantsの型を定義
-import { Player, Pokemon, Party } from '@prisma/generated/tournament';
-import { pokemon } from '@prisma/generated/pokedex';
+import { Player, Pokemon, Party } from '../../prisma/generated/tournament';
+import { pokemon } from '../../prisma/generated/pokedex';
 import { PokemonRankingData, Ranking } from './ranking';
 import { BattlePokemon, PokemonNum } from './scoreboard';
 

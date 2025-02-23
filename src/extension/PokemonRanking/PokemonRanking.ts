@@ -1,6 +1,6 @@
 import type { NodeCG } from '../nodecg';
 import { tournamentDb } from '../prisma';
-import { Pokemon } from '@prisma/generated/tournament';
+import { Pokemon } from '../../../prisma/generated/tournament';
 
 export const pokemonRanking = async (nodecg: NodeCG) => {
   const log = new nodecg.Logger('pokemonRanking'); // サーバー側にログを出す場合のコード

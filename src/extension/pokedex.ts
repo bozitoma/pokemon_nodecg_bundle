@@ -1,5 +1,5 @@
 import type { NodeCG } from './nodecg';
-import { pokemon } from '@prisma/generated/pokedex';
+import { pokemon } from '../../prisma/generated/pokedex';
 import { pokedexDb } from './prisma';
 
 export const pokedex = async (nodecg: NodeCG) => {

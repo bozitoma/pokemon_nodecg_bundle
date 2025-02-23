@@ -5,7 +5,7 @@ import { useCallback, useMemo, useState } from 'react';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { PlayerSide, TerastalType_JP } from '../../types/scoreboard';
 import { useReplicant } from '../../hooks/useReplicant';
-import { Player } from '@prisma/generated/tournament';
+import { Player } from '../../../prisma/generated/tournament';
 import { ModalAlert } from '../ModalAlert';
 
 export type ImportedParty = {
