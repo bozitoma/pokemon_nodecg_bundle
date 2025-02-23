@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react-swc';
 import nodecg from './vite-plugin-nodecg.mjs';
 import rollupEsbuild from 'rollup-plugin-esbuild';
 import rollupExternals from 'rollup-plugin-node-externals';
+import commonjs from '@rollup/plugin-commonjs';
+import { resolve } from 'path';
 
 export default defineConfig({
   clearScreen: false,
@@ -18,46 +20,28 @@ export default defineConfig({
       dashboard: './src/dashboard/*.tsx',
       extension: {
         input: './src/extension/index.ts',
-        plugins: [rollupEsbuild(), rollupExternals()],
+        plugins: [rollupEsbuild(), rollupExternals(), commonjs()],
       },
     }),
   ],
   assetsInclude: ['**/*.riv'], // rivファイルを適用させるコンフィグ
+  build: {
+    rollupOptions: {
+      external: [
+        '@prisma/client', // Prismaクライアントを外部化
+        'prisma/generated/pokedex', // 独自生成クライアント
+        'prisma/generated/tournament',
+      ],
+      output: {
+        globals: {
+          '@prisma/client': 'PrismaClient',
+        },
+      },
+    },
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
 });
-
-// import { resolve } from 'path';
-// import { defineConfig } from 'vite';
-// import react from '@vitejs/plugin-react-swc';
-
-// // index.htmlのルートディレクトリを変更
-// // 参考
-// // https://zenn.dev/junseinagao/scraps/a4e6b1413ff26e
-// // https://zenn.dev/s_takashi/articles/d033401905ccf9
-// const root = resolve(__dirname, 'src');
-
-// // ビルドの出力先をプロジェクトルート直下に変更
-// const outDir = resolve(__dirname, '');
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   root,
-//   plugins: [react()],
-//   base: './',
-//   build: {
-//     outDir,
-//     // assetsDir: 'shared',
-//     rollupOptions: {
-//       input: {
-//         dashboard: resolve(root, 'dashboard', 'index.html'),
-//         graphics: resolve(root, 'graphics', 'index.html'),
-//         // extension: resolve(root, 'extension', 'index.ts'),
-//       },
-//       output: {
-//         // entry chunk assets それぞれの書き出し名の指定
-//         entryFileNames: `[name]/index.js`,
-//         chunkFileNames: `shared/[name].js`,
-//         assetFileNames: `shared/[name].[ext]`,
-//       },
-//     },
-//   },
-// });
