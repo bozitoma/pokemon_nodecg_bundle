@@ -89,4 +89,9 @@ export const replicantDefaultValues: ReplicantMap = {
     item: {},
     moves: {},
   },
+  LegendaryRanking: {
+    total: 0,
+    legendaryRanking: [],
+    combinationRanking: []
+  },
 };

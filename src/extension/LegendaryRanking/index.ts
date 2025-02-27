@@ -1,0 +1,1 @@
+export { LegendaryRanking } from './LegendaryRanking';

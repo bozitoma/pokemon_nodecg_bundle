@@ -96,7 +96,7 @@ export const pokemonRanking = async (nodecg: NodeCG) => {
       return acc;
     }, {} as { [key: string]: any });
   };
-  log.info(calculateDuplicates(pokemonData));
+  // log.info(calculateDuplicates(pokemonData));
   pokemonRankingRep.value = calculateDuplicates(pokemonData);
   log.info(`pokemonRankingの計算完了`);
 

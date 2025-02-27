@@ -1,6 +1,5 @@
 import type { NodeCG } from '../nodecg';
-import { CombinationCounter } from '../tournament/CombinationCounter';
-import { RankingGenerator } from '../tournament/RankingGenerator';
+import { KPsCalculator } from '../tournament/KPsCalculator';
 
 export const topcutKPs = async (nodecg: NodeCG) => {
   const log = new nodecg.Logger('TopcutKPs'); // サーバー側にログを出す場合のコード
@@ -14,20 +13,15 @@ export const topcutKPs = async (nodecg: NodeCG) => {
 
   nodecg.listenFor('calcTopcutKPs', () => {
     const topcutRep = nodecg.Replicant('Topcut');
-
     const topcutParties = topcutRep.value?.players
       ?.filter((player) => player.place <= (topcutRep.value?.total ?? 0))
       .map((player) => player.party) ?? [['なし', 'なし', 'なし', 'なし', 'なし', 'なし']];
-    const combinationCounter = new CombinationCounter(topcutParties);
+    const calculator = new KPsCalculator(topcutParties);
 
     // ランキングを生成
     KPs.forEach((KPRep, index) => {
       log.info(`${KPRep.name}のTopcutKP計算中...`);
-      const combinationCounts = combinationCounter.countOccurrences(index + 1); // 2要素の組み合わせをカウント
-      const totalCombinations = topcutParties.length; // パーティ数をトータルに設定
-      const rankingGenerator = new RankingGenerator(combinationCounts, totalCombinations);
-      const ranking = rankingGenerator.generate();
-      KPRep.value = ranking;
+      KPRep.value = calculator.calculateKPs(index + 1); // 2要素の組み合わせをカウント
       log.info(`${KPRep.name}のTopcutKP計算完了`);
     });
   });

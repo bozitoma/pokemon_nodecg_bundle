@@ -1,8 +1,8 @@
-import { PokemonRankingData, Ranking } from "../../types/ranking";
+import { KPResult, PokemonRankingData } from "../../types/ranking";
 
-export const rankingDefaultValue: Ranking = {
+export const rankingDefaultValue: KPResult = {
   total: 0,
-  ranking: [{ id: 0, place: 0, combination: 'なし', score: 0, rate: '0%' }],
+  ranking: [{ id: 0, place: 0, combination: { pokemons: ['なし', 'なし', 'なし', 'なし', 'なし', 'なし'] }, score: 0, percentage: 0 }],
 };
 
 export const pokemonRankingDefaultValue: PokemonRankingData = {

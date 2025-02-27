@@ -1,41 +1,42 @@
-import { RankingData } from "../../types/ranking";
+import { KPData, KPResult } from "../../types/ranking";
 
 export class RankingGenerator {
-  scores: Record<string, number>;
+  scores: Map<string[], number>;  // ポケモンの組み合わせと出現回数
   total: number;
+  k: number;  // 何匹の組み合わせか（KP, K2P, ...）
 
-  constructor(scores: Record<string, number>, total: number) {
+  constructor(scores: Map<string[], number>, total: number, k: number) {
     this.scores = scores;
     this.total = total;
+    this.k = k;
   }
 
-  generate(): { total: number; ranking: RankingData[] } {
-    // オブジェクトを配列に変換し、scoreで降順ソート
-    const sortedRanking = Object.entries(this.scores)
-      .map(([combination, score]) => ({
-        combination,
+  generate(): KPResult {
+    // Map をエントリーの配列に変換
+    const sortedRanking = Array.from(this.scores.entries())
+      .map(([pokemons, score]) => ({
+        combination: { pokemons },
         score,
-        rate: ((score / this.total) * 100).toFixed(2), // rateを計算し小数点2桁に
+        percentage: (score / this.total) * 100,
       }))
       .sort((a, b) => b.score - a.score);
 
     // ランキングデータを作成
-    const ranking: RankingData[] = [];
-    let currentRank = 1; // 現在の順位
-    let previousScore: number | null = null; // 直前のスコア
+    const ranking: KPData[] = [];
+    let currentRank = 1;
+    let previousScore: number | null = null;
 
     sortedRanking.forEach((entry, index) => {
-      // 同じスコアの場合、順位をスキップしない
       if (entry.score !== previousScore) {
-        currentRank = index + 1; // 累計順位
+        currentRank = index + 1;
       }
 
       ranking.push({
-        id: index + 1, // sort用にIDを追加
+        id: index + 1,
         place: currentRank,
         combination: entry.combination,
         score: entry.score,
-        rate: `${entry.rate}%`,
+        percentage: entry.percentage,
       });
 
       previousScore = entry.score;

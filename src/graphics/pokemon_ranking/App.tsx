@@ -44,9 +44,9 @@ function App() {
 
   const pokemonData = getPokemonInfo(pokemonDataRep?.name ?? '');
   const pokemonIcon = getPokemonIcon(pokemonDataRep?.name ?? '');
-  const KP = KPRep?.ranking.find((kp) => kp.combination === pokemonDataRep?.name ?? '');
+  const KP = KPRep?.ranking.find((kp) => kp.combination.pokemons.includes(pokemonDataRep?.name ?? ''));
   const Topcut_KP = Topcut_KPRep?.ranking.find(
-    (kp) => kp.combination === pokemonDataRep?.name ?? ''
+    (kp) => kp.combination.pokemons.includes(pokemonDataRep?.name ?? '')
   );
 
   const KPRate = Topcut_KP?.score ?? 0 / (KP?.score ?? 1); // ポケモン毎の予選抜けKP/ポケモン毎のKP
@@ -127,7 +127,7 @@ function App() {
       </div>
       <div className="pokemonTotal">
         <div className="pokemonTotalPlace">{KP?.place ?? ''}位</div>
-        <div className="pokemonTotalRate">{KP?.rate ?? ''}</div>
+        <div className="pokemonTotalRate">{KP?.percentage ?? ''}</div>
       </div>
       <div className="topcutRate">
         <div className="topcutRateRate">{topcutRate.toFixed(1)}</div>

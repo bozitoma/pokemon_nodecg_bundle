@@ -17,7 +17,6 @@ export const tournamentDb = new Tournament({
   }
 });
 
-
 // 接続テスト
 pokedexDb.$connect()
   .then(() => console.log('Pokedex DB connected successfully'))

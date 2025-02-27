@@ -26,7 +26,7 @@ export const useKP = () => {
     const party = pokemonNumList.map((key) => partyInfo?.[key as PokemonNum] ?? '');
     return party.reduce((acc, cur) => {
       if (!KPRep) return acc;
-      const KP = KPRep.ranking.find((pokemon) => pokemon.combination === cur)?.score;
+      const KP = KPRep.ranking.find((pokemon) => pokemon.combination.pokemons.includes(cur))?.score;
       if (!KP) return acc;
       return acc + KP;
     }, 0);

@@ -1,7 +1,7 @@
 // Replicantsの型を定義
 import { Player, Pokemon, Party } from '../../prisma/generated/tournament';
 import { pokemon } from '../../prisma/generated/pokedex';
-import { PokemonRankingData, Ranking } from './ranking';
+import { PokemonRankingData, KPResult, LegendaryRankingData } from './ranking';
 import { BattlePokemon, PokemonNum } from './scoreboard';
 
 export interface ReplicantMap {
@@ -42,18 +42,18 @@ export interface ReplicantMap {
       [pokemon in string]: number; // 使用率
     };
   };
-  KP: Ranking;
-  K2P: Ranking;
-  K3P: Ranking;
-  K4P: Ranking;
-  K5P: Ranking;
-  K6P: Ranking;
-  Topcut_KP: Ranking;
-  Topcut_K2P: Ranking;
-  Topcut_K3P: Ranking;
-  Topcut_K4P: Ranking;
-  Topcut_K5P: Ranking;
-  Topcut_K6P: Ranking;
+  KP: KPResult;
+  K2P: KPResult;
+  K3P: KPResult;
+  K4P: KPResult;
+  K5P: KPResult;
+  K6P: KPResult;
+  Topcut_KP: KPResult;
+  Topcut_K2P: KPResult;
+  Topcut_K3P: KPResult;
+  Topcut_K4P: KPResult;
+  Topcut_K5P: KPResult;
+  Topcut_K6P: KPResult;
   PokemonRanking: PokemonRankingData;
   Topcut_PokemonRanking: PokemonRankingData;
   PokemonData: {
@@ -65,4 +65,5 @@ export interface ReplicantMap {
     item: { [item in string]: number; };
     moves: { [move in string]: number; };
   };
+  LegendaryRanking: LegendaryRankingData;
 }

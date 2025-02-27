@@ -6,6 +6,7 @@ import { PlayerDatabase } from './tournament/PlayerDatabase';
 import { KPs } from './KPs';
 import { pokemonRanking } from './PokemonRanking';
 import { topcutKPs } from './TopcutKPs';
+import { LegendaryRanking } from './LegendaryRanking';
 
 export default (nodecg: NodeCG) => {
   // サーバー側にログを出す場合のコード
@@ -20,4 +21,5 @@ export default (nodecg: NodeCG) => {
   KPs(nodecg);
   pokemonRanking(nodecg);
   topcutKPs(nodecg);
+  LegendaryRanking(nodecg);
 };
