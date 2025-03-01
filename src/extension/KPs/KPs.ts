@@ -14,6 +14,8 @@ export const KPs = async (nodecg: NodeCG) => {
   const K6PRep = nodecg.Replicant('K6P');
   const KPs = [KPRep, K2PRep, K3PRep, K4PRep, K5PRep, K6PRep];
 
+  const partiesRep = nodecg.Replicant('Parties');
+
   /**
    * パーティデータを取得
    */
@@ -23,12 +25,22 @@ export const KPs = async (nodecg: NodeCG) => {
         id: 'desc',
       },
     });
+    partiesRep.value = result;
     return result;
   };
   const parties = await getParties();
 
   // KP計算
-  const calculator = new KPsCalculator(parties);
+  const partyArrays = parties.map(party => [
+    party.pokemon1,
+    party.pokemon2,
+    party.pokemon3,
+    party.pokemon4,
+    party.pokemon5,
+    party.pokemon6
+  ].filter((p): p is string => p !== null));
+  
+  const calculator = new KPsCalculator(partyArrays);
 
   // ランキングを生成
   KPs.forEach((KPRep, index) => {
@@ -36,43 +48,5 @@ export const KPs = async (nodecg: NodeCG) => {
     KPRep.value = calculator.calculateKPs(index + 1); // 2要素の組み合わせをカウント
     log.info(`${KPRep.name}のKP計算完了`);
   });
-
-
-  // // レスポンスをネスト配列に変換する関数
-  // const extractNestedPartyData = async (parties: Party[]): Promise<string[][]> => {
-  //   // 各partyからpokemon1～6を抽出し、ネスト配列を作成
-  //   const nestedParties = parties.map((party) => {
-  //     return [
-  //       party.pokemon1,
-  //       party.pokemon2,
-  //       party.pokemon3,
-  //       party.pokemon4,
-  //       party.pokemon5,
-  //       party.pokemon6,
-  //     ].filter((pokemon) => pokemon !== null) as string[]; // nullを除外して型をstring[]に
-  //   });
-
-  //   return nestedParties;
-  // };
-
-  // // パーティデータを取得
-  // const partiesData = await parties();
-  // const partiesRep = nodecg.Replicant('Parties');
-  // partiesRep.value = partyData;
-
-  // // インスタンス化して組み合わせをカウント
-  // const nestedParties = await extractNestedPartyData(partyData);
-  // const combinationCounter = new CombinationCounter(nestedParties);
-
-  // // ランキングを生成
-  // KPs.forEach((KPRep, index) => {
-  //   log.info(`${KPRep.name}のKP計算中...`);
-  //   const combinationCounts = combinationCounter.countOccurrences(index + 1); // 2要素の組み合わせをカウント
-  //   const totalCombinations = nestedParties.length; // パーティ数をトータルに設定
-  //   const rankingGenerator = new RankingGenerator(combinationCounts, totalCombinations);
-  //   const ranking = rankingGenerator.generate();
-  //   KPRep.value = ranking;
-  //   log.info(`${KPRep.name}のKP計算完了`);
-  // });
 };
 

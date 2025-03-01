@@ -7,7 +7,7 @@ import { nameConvert } from '../../utils/const';
 export function GraphicsLegendary({ num }: { num: number }) {
   const [legendaryRankingRep] = useReplicant('LegendaryRanking');
   const { getPokemonIcon } = usePokedex();
-  
+
   // データが未定義の場合のフォールバック
   if (!legendaryRankingRep) {
     return null;
@@ -122,11 +122,11 @@ export function GraphicsLegendary({ num }: { num: number }) {
 function App() {
   return (
     <div className="wrapper">
-      <GraphicsLegendary num={0} />
-      <GraphicsLegendary num={1} />
-      <GraphicsLegendary num={2} />
-      <GraphicsLegendary num={3} />
-      <GraphicsLegendary num={4} />
+      <GraphicsLegendary num={10} />
+      <GraphicsLegendary num={11} />
+      <GraphicsLegendary num={12} />
+      <GraphicsLegendary num={13} />
+      <GraphicsLegendary num={14} />
     </div>
   );
 }

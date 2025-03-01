@@ -37,4 +37,5 @@ export const LegendaryPokemon = [
   'コライドン',
   'ミライドン',
   'テラパゴス',
+  'テラパゴス（ノーマルフォルム）'
 ];

@@ -11,6 +11,31 @@ export const emptyParty: string[] = Array.from(
 );
 
 export const nameConvert = (name: string) => {
+  // カラナクシ and トリトドン の処理
+  if (name.includes('（にしのうみ）') || name.includes('（ひがしのうみ）')) {
+    return name.replace('（にしのうみ）', '').replace('（ひがしのうみ）', '');
+  }
+
+  // ガラルのすがた の処理
+  if (name.includes('（ガラルのすがた）')) {
+    return 'ガラル' + name.replace('（ガラルのすがた）', '');
+  }
+  
+  // アローラのすがた の処理
+  if (name.includes('（アローラのすがた）')) {
+    return 'アローラ' + name.replace('（アローラのすがた）', '');
+  }
+
+  // ヒスイのすがた の処理
+  if (name.includes('（ヒスイのすがた）')) {
+    return 'ヒスイ' + name.replace('（ヒスイのすがた）', '');
+  }
+
+  // パルデアのすがた の処理
+  if (name.includes('（パルデアのすがた）')) {
+    return 'パルデア' + name.replace('（パルデアのすがた）', '');
+  }
+
   switch (name) {
     case 'ウーラオス（れんげきのかた）':
       return '水ウーラオス';
@@ -28,8 +53,6 @@ export const nameConvert = (name: string) => {
       return '暁ガチグマ';
     case 'ランドロス（れいじゅうフォルム）':
       return '霊獣ランドロス';
-    case 'キュウコン（アローラのすがた）':
-      return 'アローラキュウコン';
     case 'バドレックス（はくばじょうのすがた）':
       return '白バドレックス';
     case 'バドレックス（こくばじょうのすがた）':
@@ -52,6 +75,12 @@ export const nameConvert = (name: string) => {
       return 'オリジンディアルガ';
     case 'パルキア（オリジンフォルム）':
       return 'オリジンパルキア';
+    case 'ザシアン（けんのおう）':
+      return 'ザシアン';
+    case 'ザマゼンタ（れきせんのゆうしゃ）':
+      return 'ザマゼンタ';
+    case 'テラパゴス（ノーマルフォルム）':
+      return 'テラパゴス';
     default:
       return name;
   }

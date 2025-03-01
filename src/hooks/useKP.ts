@@ -8,16 +8,6 @@ export const useKP = () => {
   const [KPRep] = useReplicant('KP');
   const [partiesRep] = useReplicant('Parties');
   const [topcutRep] = useReplicant('Topcut');
-  // const getKPscore = (name: string) => {
-  //   const newName =
-  //     name === 'ウーラオス（れんげきのかた）' || name === 'ウーラオス（いちげきのかた）'
-  //       ? 'ウーラオス'
-  //       : name;
-  //   const pokemonName = KPRep?.find((kp) => kp.pokemon === newName);
-  //   const KPscore = pokemonName ? pokemonName.score : 0;
-
-  //   return KPscore;
-  // };
 
   const getPartyKP = (playerName: string) => {
     if (!partiesRep) return 0;
@@ -33,7 +23,7 @@ export const useKP = () => {
   };
 
   const getSortedTopcut = () => {
-    if (!topcutRep || !KPRep) return null;
+    if (!topcutRep) return null;
     const playersWithKP = topcutRep.players.map((player) => ({
       playerName: player.name ?? '',
       kpScore: getPartyKP(player.name ?? ''),
@@ -43,7 +33,7 @@ export const useKP = () => {
   };
 
   const getHighestKPPlayer = () => {
-    if (!partiesRep || !KPRep) return null;
+    if (!partiesRep) return null;
 
     const playersWithKP = [...partiesRep].map((party) => ({
       playerName: party.player_name ?? '',

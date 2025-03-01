@@ -12,6 +12,8 @@ export const TopcutPartyGraphics = ({ place }: { place: number }) => {
     kpScore: 0,
     party: emptyParty,
   }];
+  console.log('sortedTopcut', sortedTopcut);
+
   const player = sortedTopcut[place - 1];
   return (
     <div className="party_row">

@@ -1,59 +1,69 @@
 import { RankingGenerator } from "./RankingGenerator";
+// import { Party } from "../../../prisma/generated/tournament";
 
 export class KPsCalculator {
-  private parties: any[]; // tournamentDb.party の型に応じて適切な型を指定
+  private parties: string[][]; // パーティは文字列の配列の配列
 
-  constructor(parties: any[]) {
+  constructor(parties: string[][]) {
     this.parties = parties;
   }
 
-  // k個のポケモンの組み合わせを生成
-  private generateCombinations(pokemons: string[], k: number): string[][] {
-    if (k === 1) return pokemons.map(p => [p]);
-    const combinations: string[][] = [];
-    
-    for (let i = 0; i <= pokemons.length - k; i++) {
-      const head = pokemons[i];
-      const tailCombinations = this.generateCombinations(
-        pokemons.slice(i + 1),
-        k - 1
-      );
-      tailCombinations.forEach(tail => {
-        combinations.push([head, ...tail]);
-      });
-    }
-    
-    return combinations;
-  }
-
   calculateKPs(k: number) {
-    const combinationCounts = new Map<string[], number>();
+    // Mapを使用して同じポケモン/組み合わせのカウントを合算
+    const combinationMap = new Map<string[], number>();
 
     this.parties.forEach(party => {
-      const partyPokemons = [
-        party.pokemon1,
-        party.pokemon2,
-        party.pokemon3,
-        party.pokemon4,
-        party.pokemon5,
-        party.pokemon6,
-      ].filter(p => p); // null/undefined を除外
-
-      // k個のポケモンの組み合わせを生成してカウント
+      // partyは既に文字列の配列なので、直接使用可能
+        const partyPokemons = party.filter(p => p && p !== 'なし'); // null/undefined/なし を除外1
       const combinations = this.generateCombinations(partyPokemons, k);
+      
       combinations.forEach(combo => {
-        const sortedCombo = combo.sort(); // ポケモンの順序を統一
-        const count = combinationCounts.get(sortedCombo) || 0;
-        combinationCounts.set(sortedCombo, count + 1);
+        const sortedCombo = [...combo].sort();
+        const existing = Array.from(combinationMap.keys())
+          .find(key => this.arraysEqual(key, sortedCombo));
+        
+        if (existing) {
+          combinationMap.set(existing, (combinationMap.get(existing) || 0) + 1);
+        } else {
+          combinationMap.set(sortedCombo, 1);
+        }
       });
     });
 
+    // デバッグ用のログ追加
+    console.log('Combinations generated:', {
+      k,
+      totalParties: this.parties.length,
+      combinationsFound: combinationMap.size,
+      firstCombination: Array.from(combinationMap.entries())[0]
+    });
+
     const rankingGenerator = new RankingGenerator(
-      combinationCounts,
+      combinationMap,
       this.parties.length,
       k
     );
     
     return rankingGenerator.generate();
+  }
+
+  private generateCombinations(pokemons: string[], k: number): string[][] {
+    if (k === 1) return pokemons.map(p => [p]);
+    if (k === 0 || pokemons.length < k) return [];
+    
+    return pokemons.reduce((acc: string[][], pokemon, index) => {
+      const remainingPokemons = pokemons.slice(index + 1);
+      const combinationsWithoutCurrent = this.generateCombinations(remainingPokemons, k - 1);
+      
+      const newCombinations = combinationsWithoutCurrent.map(combination => 
+        [pokemon, ...combination]
+      );
+      
+      return [...acc, ...newCombinations];
+    }, []);
+  }
+
+  private arraysEqual(a: string[], b: string[]): boolean {
+    return a.length === b.length && a.every((val, index) => val === b[index]);
   }
 } 

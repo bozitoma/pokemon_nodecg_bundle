@@ -91,8 +91,8 @@ export const LegendaryRanking = async (nodecg: NodeCG) => {
   });
 
   // 結果を表示
-  log.info('Legendary Pokemon Ranking:', JSON.stringify(legendaryRanking, null, 2));
-  log.info('Combination Rankings:', JSON.stringify(combinationRanking, null, 2));
+  // log.info('Legendary Pokemon Ranking:', JSON.stringify(legendaryRanking, null, 2));
+  // log.info('Combination Rankings:', JSON.stringify(combinationRanking, null, 2));
 
   // Replicantに保存
   legendaryRankingRep.value = {
