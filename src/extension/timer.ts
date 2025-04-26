@@ -1,11 +1,20 @@
 import type { NodeCG } from './nodecg';
+import { replicantDefaultValues } from '../utils/defaultValues/replicat';
 
 export const timer = (nodecg: NodeCG) => {
-  const repTimer = nodecg.Replicant('Timer');
-  const repSelectTime = nodecg.Replicant('SelectTime');
+  // 初期値を明示的に設定
+  const repTimer = nodecg.Replicant('Timer', {
+    defaultValue: replicantDefaultValues.Timer
+  });
+
+  const repSelectTime = nodecg.Replicant('SelectTime', {
+    defaultValue: replicantDefaultValues.SelectTime
+  });
 
   // サーバー側にログを出す場合のコード
   const log = new nodecg.Logger('Timer');
+  log.info('Timer initialized with default values:', repTimer.value);
+  log.info('SelectTime initialized with default values:', repSelectTime.value);
 
   let intervalID: NodeJS.Timeout;
   const timerStart = () => {

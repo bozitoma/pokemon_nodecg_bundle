@@ -24,30 +24,9 @@ const translateType: { [key in TerastalType_JP]: TerastalType } = {
   ステラ: 'stellar',
 };
 
-
 export const PlayerDatabase = async (nodecg: NodeCG) => {
-  const log = new nodecg.Logger('PlayerDatabase'); // サーバー側にログを出す場合のコード
-
-  // const partiesRep = nodecg.Replicant('Parties');
+  const log = new nodecg.Logger('PlayerDatabase');
   const battlePartyRep = nodecg.Replicant('BattleParty');
-
-  // const players = async () => {
-  //   const result = await tournamentDb.player.findMany({
-  //     // エントリー済みのプレイヤーを取得
-  //     where: {
-  //       status: 'エントリー済み',
-  //     },
-  //     orderBy: {
-  //       id: 'desc',
-  //     },
-  //   });
-  //   return result;
-  // };
-  // const playerData = await players();
-  // log.info(playerData);
-  // const playernRep = nodecg.Replicant('Player');
-  // playernRep.value = playerData;
-  // log.info('imported playerData');
 
   const party = async (accountID: string) =>
     await tournamentDb.pokemon.findMany({
@@ -67,28 +46,47 @@ export const PlayerDatabase = async (nodecg: NodeCG) => {
   }) => {
     try {
       const partyData = await party(accountId);
-      if (!(battlePartyRep.value && partyData)) return;
+      if (!battlePartyRep.value || !partyData) {
+        log.warn('battlePartyRep.value or partyData is undefined');
+        return;
+      }
 
-      const newData = {
-        ...battlePartyRep.value[playerSide],
-        ...Array.from({ length: 6 }, (_, i) => ({
-          [`pokemon${i + 1}` as PokemonNum]: {
-            ...battlePartyRep.value?.[playerSide][`pokemon${i + 1}` as PokemonNum],
-            name: partyData[i]?.pokemon_name ?? 'なし',
-            teraType: (partyData[i]?.teraType
-              ? translateType[partyData[i]?.teraType as TerastalType_JP]
-              : 'normal') as TerastalType,
-          },
-        })).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
+      // 現在のバトルパーティの状態を保持
+      const currentBattleParty = battlePartyRep.value[playerSide];
+
+      // 新しいパーティデータを作成
+      const updatedParty = Object.fromEntries(
+        Array.from({ length: 6 }, (_, i) => {
+          const pokemonNum = `pokemon${i + 1}` as PokemonNum;
+          const currentPokemon = currentBattleParty[pokemonNum];
+
+          return [
+            pokemonNum,
+            {
+              ...currentPokemon, // 現在の状態を保持
+              name: partyData[i]?.pokemon_name ?? 'なし',
+              teraType: (partyData[i]?.teraType
+                ? translateType[partyData[i].teraType as TerastalType_JP]
+                : 'normal') as TerastalType,
+            },
+          ];
+        })
+      );
+
+      // バトルパーティを更新
+      const newBattleParty = {
+        ...battlePartyRep.value,
+        [playerSide]: updatedParty,
       };
-      log.info('newData', newData);
-      battlePartyRep.value = { ...battlePartyRep.value, [playerSide]: newData };
 
-      log.info('imported party', battlePartyRep.value?.[playerSide]);
+      log.info('Updating battle party:', newBattleParty);
+      battlePartyRep.value = newBattleParty;
+
     } catch (error) {
       log.error('Error fetching party:', error);
       throw error;
     }
   };
+
   nodecg.listenFor('getParty', getParty);
 };
