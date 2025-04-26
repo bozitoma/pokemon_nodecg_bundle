@@ -25,18 +25,8 @@ export const PokemonSelector = (props: Props) => {
     return name ?? 'なし';
   }, [battlePartyRep, props.playerSide, props.pokemonNum]);
 
-  // Replicantの値を確認するログ
-  useEffect(() => {
-    console.log(`Replicant値確認 - ${props.playerSide} ${props.pokemonNum}:`, {
-      currentValue: pokemonName,
-      battlePartyValue: battlePartyRep?.[props.playerSide]?.[props.pokemonNum]
-    });
-  }, [battlePartyRep, props.playerSide, props.pokemonNum, pokemonName]);
-
   const handleChangePokemon = useCallback((_event: unknown, newPokemon: string | null) => {
     if (newPokemon != null && battlePartyRep) {
-      console.log(`ポケモン選択イベント: ${props.playerSide} ${props.pokemonNum} -> ${newPokemon}`);
-
       setBattlePartyRep({
         ...battlePartyRep,
         [props.playerSide]: {
