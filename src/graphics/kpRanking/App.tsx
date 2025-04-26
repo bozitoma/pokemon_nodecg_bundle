@@ -12,8 +12,8 @@ function App() {
       <div className="totalParty">{totalPartyNum}</div>
       <div className="wrapper">
         <KPRankingList start={1} end={11} />
-        <KPRankingList start={12} end={22} />
-        <KPRankingList start={23} end={33} />
+        <KPRankingList start={11} end={21} />
+        <KPRankingList start={21} end={31} />
       </div>
     </div>
   );
