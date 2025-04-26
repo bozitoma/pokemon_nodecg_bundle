@@ -20,6 +20,7 @@ export const replicantDefaultValues: ReplicantMap = {
       id: 1,
       accountID: '1',
       player_name: 'name',
+      party_num: 1,
       pokemon1: 'なし',
       pokemon2: 'なし',
       pokemon3: 'なし',

@@ -75,6 +75,7 @@ model Party {
   id          Int     @id @default(autoincrement())
   accountID   String?
   player_name String?
+  party_num   Int?
   pokemon1    String?
   pokemon2    String?
   pokemon3    String?
