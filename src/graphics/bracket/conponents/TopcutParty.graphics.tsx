@@ -1,23 +1,21 @@
-import { useKP } from '../../../hooks/useKP';
 import { usePokedex } from '../../../hooks/usePokedex';
 import { emptyParty } from '../../../utils/const';
-// import { useReplicant } from '../../../hooks/useReplicant';
+import { useReplicant } from '../../../hooks/useReplicant';
 
 export const TopcutPartyGraphics = ({ place }: { place: number }) => {
-  // const [topcutRep] = useReplicant('Topcut');
+  const [topcutRep] = useReplicant('Topcut');
   const { getPokemonIcon } = usePokedex();
-  const { getSortedTopcut } = useKP();
-  const sortedTopcut = getSortedTopcut() ?? [{
-    playerName: '',
-    kpScore: 0,
-    party: emptyParty,
-  }];
 
-  const player = sortedTopcut[place - 1];
+  // 元のplaceに対応するプレイヤーを探す
+  const player = topcutRep?.players?.find(p => p.place === place);
+
+  // プレイヤーが見つからない場合は空のパーティを表示
+  const party = player?.party || emptyParty;
+
   return (
     <div className="party_row">
-      {player?.party.map((pokemon) => (
-        <img className="pokemonIcon" src={getPokemonIcon(pokemon)} alt="" />
+      {party.map((pokemon, index) => (
+        <img key={index} className="pokemonIcon" src={getPokemonIcon(pokemon)} alt="" />
       ))}
     </div>
   );

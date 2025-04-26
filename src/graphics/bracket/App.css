@@ -6,9 +6,9 @@
   color: aliceblue;
 }
 
-body {
+/* body {
   background: url(../../assets/bracket.jpg);
-}
+} */
 
 .wrapper {
   display: flex;
@@ -24,7 +24,8 @@ body {
 .bracket-left, .bracket-right {
   display: flex;
   flex-direction: column;
-  margin: 0 20px;
+  margin: -125px 600px 0 80px;
+  gap: 105px;
 }
 
 .list {
@@ -38,7 +39,11 @@ body {
   display: flex;
   position: relative;
   width: 420px;
-  margin-bottom: 35px;
+  margin-bottom: 5px;
+}
+
+.list .party_row:last-child {
+  margin-bottom: 0;
 }
 
 .score {
