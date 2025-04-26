@@ -20,7 +20,7 @@ export const nameConvert = (name: string) => {
   if (name.includes('（ガラルのすがた）')) {
     return 'ガラル' + name.replace('（ガラルのすがた）', '');
   }
-  
+
   // アローラのすがた の処理
   if (name.includes('（アローラのすがた）')) {
     return 'アローラ' + name.replace('（アローラのすがた）', '');
@@ -34,6 +34,16 @@ export const nameConvert = (name: string) => {
   // パルデアのすがた の処理
   if (name.includes('（パルデアのすがた）')) {
     return 'パルデア' + name.replace('（パルデアのすがた）', '');
+  }
+
+  // れいじゅうフォルム の処理（例: トルネロス（れいじゅうフォルム） → 霊獣トルネロス）
+  if (name.includes('（れいじゅうフォルム）')) {
+    return '霊獣' + name.replace('（れいじゅうフォルム）', '');
+  }
+
+  // けしんフォルム の処理（例: トルネロス（けしんフォルム） → 化身トルネロス）
+  if (name.includes('（けしんフォルム）')) {
+    return '化身' + name.replace('（けしんフォルム）', '');
   }
 
   switch (name) {
@@ -51,8 +61,6 @@ export const nameConvert = (name: string) => {
       return '岩オーガポン';
     case 'ガチグマ（アカツキ）':
       return '暁ガチグマ';
-    case 'ランドロス（れいじゅうフォルム）':
-      return '霊獣ランドロス';
     case 'バドレックス（はくばじょうのすがた）':
       return '白バドレックス';
     case 'バドレックス（こくばじょうのすがた）':
