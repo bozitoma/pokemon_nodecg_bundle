@@ -46,12 +46,25 @@ export const useKP = () => {
 
     // KPを計算
     const party = pokemonNumList.map((key) => partyInfo?.[key as PokemonNum] ?? '');
-    return party.reduce((acc, cur) => {
-      if (!KPRep || !cur) return acc;
-      const KP = KPRep.ranking.find((pokemon) => pokemon.combination.pokemons.includes(cur))?.score;
-      if (!KP) return acc;
-      return acc + KP;
-    }, 0);
+
+    // ポケモンごとのKPスコアを計算して表示
+    let totalKP = 0;
+    const pokemonKPs = party.map(pokemon => {
+      if (!KPRep || !pokemon) return { pokemon, kp: 0 };
+      const kp = KPRep.ranking.find((p) => p.combination.pokemons.includes(pokemon))?.score ?? 0;
+      totalKP += kp;
+      return { pokemon, kp };
+    });
+
+    console.log(`プレイヤー「${fullName}」のKP詳細:`, {
+      playerName,
+      partyNum,
+      party,
+      pokemonKPs,
+      totalKP
+    });
+
+    return totalKP;
   };
 
   const getSortedTopcut = () => {
@@ -69,15 +82,44 @@ export const useKP = () => {
   const getHighestKPPlayer = () => {
     if (!partiesRep) return null;
 
-    const playersWithKP = [...partiesRep].map((party) => ({
-      playerName: party.player_name ?? '',
-      kpScore: getPartyKP(party.player_name ?? ''),
-      party: pokemonNumList.map((key) => party[key as PokemonNum] ?? ''),
-    }));
+    console.log('すべてのパーティデータ:', partiesRep);
 
-    return playersWithKP.reduce((highest, current) => {
-      return highest.kpScore > current.kpScore ? highest : current;
-    }, playersWithKP[0]);
+    // すべてのパーティのKPスコアを計算
+    const playersWithKP = [...partiesRep].map((party) => {
+      const playerName = party.player_name ?? '';
+      const partyNum = party.party_num;
+      const fullName = partyNum ? `${playerName}_${partyNum}` : playerName;
+
+      const partyPokemons = pokemonNumList.map((key) => party[key as PokemonNum] ?? '');
+
+      // KPスコアを計算
+      let totalKP = 0;
+      const pokemonKPs = partyPokemons.map(pokemon => {
+        if (!KPRep || !pokemon) return { pokemon, kp: 0 };
+        const kp = KPRep.ranking.find((p) => p.combination.pokemons.includes(pokemon))?.score ?? 0;
+        totalKP += kp;
+        return { pokemon, kp };
+      });
+
+      return {
+        playerName: fullName,
+        kpScore: totalKP,
+        party: partyPokemons,
+        details: { pokemonKPs, totalKP }
+      };
+    });
+
+    console.log('すべてのプレイヤーのKP詳細:', playersWithKP);
+
+    // KPスコアで降順ソート
+    const sortedPlayers = [...playersWithKP].sort((a, b) => b.kpScore - a.kpScore);
+    console.log('KPソート後のプレイヤー:', sortedPlayers);
+
+    // 最も高いKPスコアを持つプレイヤーを返す
+    const highest = sortedPlayers[0];
+    console.log('最高KPスコアプレイヤー:', highest);
+
+    return highest;
   };
 
   return { getHighestKPPlayer, getSortedTopcut };
