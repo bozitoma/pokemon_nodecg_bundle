@@ -15,7 +15,6 @@ export const Timer = () => {
   const reset = () => nodecg.sendMessage('timerReset');
   const [repTimer, setRepTimer] = useReplicant('Timer');
   const [repSelectTime, setRepSelectTime] = useReplicant('SelectTime');
-  console.log(repTimer);
 
   // SelectTimeの初期値をマウント時に更新
   useEffect(() => {

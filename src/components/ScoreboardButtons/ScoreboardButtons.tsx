@@ -47,6 +47,9 @@ export const ScoreboardButtons = () => {
   // Reset完了のスナックバー
   const [resetCompleteOpen, setResetCompleteOpen] = useState(false);
 
+  // Nextバトル完了のスナックバー
+  const [nextBattleOpen, setNextBattleOpen] = useState(false);
+
   const submit = useCallback(() => {
     setScoreborad({
       Round: round,
@@ -108,14 +111,18 @@ export const ScoreboardButtons = () => {
 
   const nextBattle = useCallback(() => {
     if (!battlePartyRep) return;
+
+    // バトル状態、状態異常、テラスタルの有無のみをリセット
     setBattlePartyRep({
       Player1: Object.entries(battlePartyRep.Player1).reduce<Party>(
         (acc, [pokemonNum, pokemon]) => ({
           ...acc,
           [pokemonNum]: {
             ...(typeof pokemon === 'object' && pokemon !== null ? pokemon : {}),
-            name: 'なし',
-            teraType: 'normal',
+            // nameとteraTypeはそのまま保持
+            name: pokemon?.name || 'なし',
+            teraType: pokemon?.teraType || 'normal',
+            // バトル関連の状態のみリセット
             battleState: 'Benched',
             statusAilment: 'なし',
             terastallize: false,
@@ -129,8 +136,10 @@ export const ScoreboardButtons = () => {
           ...acc,
           [pokemonNum]: {
             ...(typeof pokemon === 'object' && pokemon !== null ? pokemon : {}),
-            name: 'なし',
-            teraType: 'normal',
+            // nameとteraTypeはそのまま保持
+            name: pokemon?.name || 'なし',
+            teraType: pokemon?.teraType || 'normal',
+            // バトル関連の状態のみリセット
             battleState: 'Benched',
             statusAilment: 'なし',
             terastallize: false,
@@ -140,6 +149,8 @@ export const ScoreboardButtons = () => {
         battlePartyRep.Player2
       ),
     });
+
+    setNextBattleOpen(true); // 次のバトル準備完了のスナックバーを表示
   }, [battlePartyRep]);
 
   return (
@@ -200,6 +211,14 @@ export const ScoreboardButtons = () => {
         state={resetCompleteOpen}
         setState={setResetCompleteOpen}
         text="Reset has been completed scoreboard!"
+        severity="success"
+      />
+
+      {/* 次のバトル準備完了のスナックバー */}
+      <ModalAlert
+        state={nextBattleOpen}
+        setState={setNextBattleOpen}
+        text="Battle states have been reset!"
         severity="success"
       />
 

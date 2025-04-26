@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { PokemonAvatar } from './PokemonAvatar';
 import { PlayerSide, PokemonNum } from '../../types/scoreboard';
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useReplicant } from '../../hooks/useReplicant';
 
 type Props = {
