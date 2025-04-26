@@ -3,11 +3,22 @@ import { useReplicant } from './useReplicant';
 
 export const usePokedex = () => {
   const [pokedexRep] = useReplicant('Pokedex');
+
   const getPokemonIcon = useCallback(
-    (pokemonName: string) =>
-      pokedexRep?.find((pokemon) => pokemon.name === pokemonName)?.img1 ?? '',
+    (pokemonName: string) => {
+      // ウーラオスの特殊処理
+      if (pokemonName === 'ウーラオス' ||
+          (pokemonName.includes('ウーラオス') && pokemonName !== 'ウーラオス（れんげきのかた）')) {
+        // ウーラオスの場合は「れんげきのかた」のアイコンを使用
+        return pokedexRep?.find((pokemon) => pokemon.name === 'ウーラオス（れんげきのかた）')?.img1 ?? '';
+      }
+
+      // 通常の処理
+      return pokedexRep?.find((pokemon) => pokemon.name === pokemonName)?.img1 ?? '';
+    },
     [pokedexRep]
   );
+
   const getPokemonInfo = useCallback(
     (pokemonName: string) => {
       const pokemon = pokedexRep?.find((pokemon) => pokemon.name === pokemonName);

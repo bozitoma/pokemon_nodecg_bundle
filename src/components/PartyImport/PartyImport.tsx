@@ -33,7 +33,14 @@ export const PartyImport = ({ playerSide }: { playerSide: PlayerSide }) => {
 
   const onClick = useCallback(() => {
     if (selectedParty?.accountID) {
-      nodecg.sendMessage('getParty', { accountId: selectedParty.accountID, playerSide });
+      console.log(`インポート: ${selectedParty.player_name}_${selectedParty.party_num}`, selectedParty);
+
+      nodecg.sendMessage('getParty', {
+        accountId: selectedParty.accountID,
+        playerSide,
+        partyNum: selectedParty.party_num ?? undefined
+      });
+
       setSubmitOpen(true); // Submit完了のスナックバーを表示
     }
   }, [selectedParty, playerSide]);

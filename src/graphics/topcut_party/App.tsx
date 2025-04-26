@@ -10,15 +10,33 @@ function App() {
   const highestKPPlayer = getHighestKPPlayer();
   const [partiesRep] = useReplicant('Parties');
   const totalPartyNum = partiesRep?.length ?? 0;
+  // 8位までの表示
+  // return (
+  //   <div className="wrapper">
+  //     <TopcutPartyList start={1} end={4} />
+  //     <TopcutPartyList start={5} end={8} />
+  //     <div className="party_row maxPartyKP">
+  //       {highestKPPlayer?.party.map((pokemon) => (
+  //         <img className="pokemonIcon" src={getPokemonIcon(pokemon)} alt="" />
+  //       ))}
+  //       <div className="maxScore">
+  //         <div className="score">{highestKPPlayer?.kpScore ?? 0}</div>
+  //       </div>
+  //     </div>
+  //     <div className="totalParty">{totalPartyNum}</div>
+  //   </div>
+  // );
+  // 16位までの表示
   return (
     <div className="wrapper">
-      <TopcutPartyList start={1} end={4} />
-      <TopcutPartyList start={5} end={8} />
+      <TopcutPartyList start={1} end={6} />
+      <TopcutPartyList start={7} end={12} />
+      <TopcutPartyList start={13} end={16} />
       <div className="party_row maxPartyKP">
         {highestKPPlayer?.party.map((pokemon) => (
           <img className="pokemonIcon" src={getPokemonIcon(pokemon)} alt="" />
         ))}
-        <div className="maxScore">
+        <div>
           <div className="score">{highestKPPlayer?.kpScore ?? 0}</div>
         </div>
       </div>

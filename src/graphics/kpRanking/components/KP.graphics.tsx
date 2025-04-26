@@ -1,6 +1,6 @@
-import { useReplicant } from '../../../hooks/useReplicant';
 import { KPData } from '../../../types/ranking';
 import { nameConvert } from '../../../utils/const';
+import { usePokedex } from '../../../hooks/usePokedex';
 
 type Props = {
     rankingData: KPData;
@@ -15,13 +15,29 @@ const getPercent = (total: number | undefined, KP: number) => {
   const roundToTwo = (Math.round(result * 10) / 10).toFixed(1); // 小数第一位まで表示
   return roundToTwo;
 };
+
+// ウーラオスの表示名を統一する関数
+const getPokemonDisplayName = (name: string) => {
+  // ウーラオスの場合は「ウーラオス」に統一
+  if (name.includes('ウーラオス')) {
+    return 'ウーラオス';
+  }
+  // それ以外は通常の変換を使用
+  return nameConvert(name);
+};
+
 export const KPGraphics = ({ rankingData, place, total }: Props) => {
-  const [pokedexRep] = useReplicant('Pokedex');
-  const getPokemonIcon = (pokemonName: string) =>
-    pokedexRep?.find((pokemon) => pokemon.name === pokemonName)?.img1 ?? '';
-  const pokemonName = nameConvert(rankingData.combination.pokemons[0]);
-  const pokemonIcon = getPokemonIcon(rankingData.combination.pokemons[0]  );
+  const { getPokemonIcon } = usePokedex();
+
+  const originalPokemonName = rankingData.combination.pokemons[0];
+  // ウーラオスの表示名を統一
+  const pokemonName = getPokemonDisplayName(originalPokemonName);
+
+  // アイコンの取得（usePokedex内で統一されたウーラオスのアイコン処理を行うため、元の名前を使用）
+  const pokemonIcon = getPokemonIcon(originalPokemonName);
+
   const percent = getPercent(total, rankingData.score);
+
   return (
     <div className="section">
       <div className="rank">{place}</div>

@@ -7,12 +7,24 @@
 }
 
 body {
-  background: url(../../assets/topcut.jpg);
+  background: url(../../assets/bracket.jpg);
 }
 
 .wrapper {
   display: flex;
   position: absolute;
+}
+
+.bracket {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bracket-left, .bracket-right {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
 }
 
 .list {
@@ -56,8 +68,8 @@ margin-left:auto;
 } */
 
 .pokemonIcon {
-  height: 84px;
-  width: 84px;
+  height: 64px;
+  width: 64px;
 }
 
 .totalParty {

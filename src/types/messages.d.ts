@@ -7,5 +7,5 @@ export type MessageMap = {
   types: {};
   calcTopcutKPs: {};
   getPlayerName: { data: { id: number; playerSide: PlayerSide } };
-  getParty: { data: { accountId: string; playerSide: PlayerSide } };
+  getParty: { data: { accountId: string; playerSide: PlayerSide; partyNum?: number } };
 };

@@ -4,13 +4,8 @@ import { useReplicant } from '../../hooks/useReplicant';
 import { KPRankingList } from '../kpRanking/components/KPRankingList.graphics';
 
 function App() {
-  // const [KPRep] = useReplicant('KP');
-  const [playerRep] = useReplicant('Player');
-  // 元のコード: 合計パーティ数
-  // const totalPartyNum = useMemo(() => KPRep?.total ?? 0, [KPRep]);
-
-  // 一時的に変更: プレイヤー数を表示
-  const totalPartyNum = useMemo(() => playerRep?.length ?? 0, [playerRep]);
+  const [KPRep] = useReplicant('KP');
+  const totalPartyNum = useMemo(() => KPRep?.total ?? 0, [KPRep]);
 
   return (
     <div className="wrapper">

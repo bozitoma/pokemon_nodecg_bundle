@@ -28,24 +28,63 @@ export const PlayerDatabase = async (nodecg: NodeCG) => {
   const log = new nodecg.Logger('PlayerDatabase');
   const battlePartyRep = nodecg.Replicant('BattleParty');
 
-  const party = async (accountID: string) =>
-    await tournamentDb.pokemon.findMany({
-      where: { accountID },
-      select: {
-        pokemon_name: true,
-        teraType: true,
-      },
-    });
+  // 選択したパーティに関連するポケモンを取得する関数
+  const party = async (accountID: string, partyNum?: number) => {
+    // partyNumが指定されている場合、特定のパーティ番号のポケモンのみを取得
+    if (partyNum !== undefined) {
+      // 特定のパーティ番号に紐づくパーティを取得
+      const selectedParty = await tournamentDb.party.findFirst({
+        where: {
+          accountID,
+          party_num: partyNum
+        }
+      });
+
+      if (!selectedParty) {
+        log.warn(`パーティが見つかりません: accountID=${accountID}, party_num=${partyNum}`);
+        return [];
+      }
+
+      log.info(`パーティ情報を取得しました: ${JSON.stringify(selectedParty)}`);
+
+      // 各ポケモンの情報を取得
+      const pokemonPromises = [];
+      if (selectedParty.pokemon1) pokemonPromises.push(tournamentDb.pokemon.findFirst({ where: { pokemon_name: selectedParty.pokemon1, accountID } }));
+      if (selectedParty.pokemon2) pokemonPromises.push(tournamentDb.pokemon.findFirst({ where: { pokemon_name: selectedParty.pokemon2, accountID } }));
+      if (selectedParty.pokemon3) pokemonPromises.push(tournamentDb.pokemon.findFirst({ where: { pokemon_name: selectedParty.pokemon3, accountID } }));
+      if (selectedParty.pokemon4) pokemonPromises.push(tournamentDb.pokemon.findFirst({ where: { pokemon_name: selectedParty.pokemon4, accountID } }));
+      if (selectedParty.pokemon5) pokemonPromises.push(tournamentDb.pokemon.findFirst({ where: { pokemon_name: selectedParty.pokemon5, accountID } }));
+      if (selectedParty.pokemon6) pokemonPromises.push(tournamentDb.pokemon.findFirst({ where: { pokemon_name: selectedParty.pokemon6, accountID } }));
+
+      const pokemonResults = await Promise.all(pokemonPromises);
+      log.info(`取得したポケモン情報: ${JSON.stringify(pokemonResults)}`);
+
+      return pokemonResults.filter(p => p !== null);
+    } else {
+      // 旧ロジック：全てのポケモンを取得（互換性のために残す）
+      return await tournamentDb.pokemon.findMany({
+        where: { accountID },
+        select: {
+          pokemon_name: true,
+          teraType: true,
+        },
+      });
+    }
+  };
 
   const getParty = async ({
     accountId,
     playerSide,
+    partyNum
   }: {
     accountId: string;
     playerSide: PlayerSide;
+    partyNum?: number;
   }) => {
     try {
-      const partyData = await party(accountId);
+      log.info(`getParty called: accountId=${accountId}, playerSide=${playerSide}, partyNum=${partyNum}`);
+
+      const partyData = await party(accountId, partyNum);
       if (!battlePartyRep.value || !partyData) {
         log.warn('battlePartyRep.value or partyData is undefined');
         return;
@@ -59,14 +98,15 @@ export const PlayerDatabase = async (nodecg: NodeCG) => {
         Array.from({ length: 6 }, (_, i) => {
           const pokemonNum = `pokemon${i + 1}` as PokemonNum;
           const currentPokemon = currentBattleParty[pokemonNum];
+          const pokemon = partyData[i];
 
           return [
             pokemonNum,
             {
               ...currentPokemon, // 現在の状態を保持
-              name: partyData[i]?.pokemon_name ?? 'なし',
-              teraType: (partyData[i]?.teraType
-                ? translateType[partyData[i].teraType as TerastalType_JP]
+              name: pokemon?.pokemon_name ?? 'なし',
+              teraType: (pokemon?.teraType
+                ? translateType[pokemon.teraType as TerastalType_JP]
                 : 'normal') as TerastalType,
             },
           ];

@@ -17,16 +17,16 @@ body {
 
 .list {
   position: relative;
-  top: 270px;
+  top: 190px;
   left: 20px;
-  margin-right: 215px;
+  margin-right: 535px;
 }
 
 .party_row {
   display: flex;
   position: relative;
   width: 420px;
-  margin-bottom: 35px;
+  margin-bottom: 60px;
 }
 
 .score {
@@ -35,16 +35,14 @@ body {
   text-align: center;
 
   font-family: 'Noto Sans-DisplayBold', Helvetica;
-  font-size: 52px;
+  font-size: 64px;
   font-weight: 600;
-
-
 
   /* top: 15px; */
   /* width: 300px; */
   width: 110px;
 
-  padding: 12px 0 0 4px;
+  padding: 20px 0 0 25px;
   /* padding-left: 30px; */
 }
 /*
@@ -56,34 +54,33 @@ margin-left:auto;
 } */
 
 .pokemonIcon {
-  height: 84px;
-  width: 84px;
+  height: 128px;
+  width: 128px;
 }
 
 .totalParty {
   position: absolute;
-  top: 735px;
-  right: 235px;
-
-  /* フォント関連の設定 */
-  font-family: 'Noto Sans-DisplayBold', Helvetica;
-  font-size: 80px;
+  top: 930px;
+  left: 440px;
+  font-family: Noto Sans-DisplayBold, Helvetica;
+  font-size: 64px;
   font-weight: 600;
 }
 
 .maxPartyKP {
   position: absolute;
-  top: 870px;
-  left: 1280px;
-
-  /* フォント関連の設定 */
-  font-family: 'Noto Sans-DisplayBold', Helvetica;
+  top: 935px;
+  left: 690px;
+  font-family: Noto Sans-DisplayBold, Helvetica;
   font-size: 96px;
   font-weight: 600;
-
-  color: #FFF;
 }
 
 .maxParty {
   padding: 12px 0 0 0;
+}
+
+.maxScore {
+  position: absolute;
+  left: 850px;
 }
